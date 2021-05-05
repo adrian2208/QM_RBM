@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{DuBois_2001}
+J.~L. DuBois and H.~R. Glyde.
+\newblock Bose-einstein condensation in trapped bosons: A variational monte
+  carlo analysis.
+\newblock {\em Physical Review A}, 63(2), Jan 2001.
+
+\bibitem{PhysRevE.98.043304}
+Marius Jonsson.
+\newblock Standard error estimation by an automated blocking method.
+\newblock {\em Phys. Rev. E}, 98:043304, Oct 2018.
+
+\bibitem{Nilsen_2005}
+J.~K. Nilsen, J.~Mur-Petit, M.~Guilleumas, M.~Hjorth-Jensen, and A.~Polls.
+\newblock Vortices in atomic bose-einstein condensates in the
+  large-gas-parameter region.
+\newblock {\em Physical Review A}, 71(5), May 2005.
+
+\bibitem{openmp08}
+{OpenMP Architecture Review Board}.
+\newblock {OpenMP} application program interface version 3.0, May 2008.
+
+\end{thebibliography}

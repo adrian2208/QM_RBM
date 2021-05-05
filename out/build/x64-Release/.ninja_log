@@ -1,0 +1,22 @@
+# ninja log v5
+13	615	637952661	CMakeFiles/vmc.dir/WaveFunctions/wavefunction.obj	87c197e185092788
+9	480	635625163	CMakeFiles/vmc.dir/InitialStates/initialstate.obj	67d5d95227028b32
+18	505	635625163	CMakeFiles/vmc.dir/particle.obj	4c54de4a073940c1
+0	822	638392630	CMakeFiles/vmc.dir/Hamiltonians/hamiltonian.obj	30c23ed796248743
+6	754	638580477	CMakeFiles/vmc.dir/WaveFunctions/simplegaussian.obj	2cfaabc63061c7e
+8	840	638580477	CMakeFiles/vmc.dir/system.obj	2e3b24613fbf6d5a
+1	645	638585744	CMakeFiles/vmc.dir/main.obj	7c7b2192b86e0f80
+9	888	638392631	CMakeFiles/vmc.dir/InitialStates/randomuniform.obj	38e56a477e1ac422
+7	850	638392630	CMakeFiles/vmc.dir/Hamiltonians/harmonicoscillator.obj	4feb62acf394cbe1
+3	489	638583849	CMakeFiles/vmc.dir/sampler.obj	335bf4d524487f9b
+645	783	638585744	vmc.exe	259a57ab8ec69963
+11	823	638392630	CMakeFiles/vmc.dir/WaveFunctions/simplegaussian_numerical.obj	e752a7b42c2579fc
+10	711	638580477	CMakeFiles/vmc.dir/sampler_gd.obj	522e7b6de4c6ece0
+3	920	638392631	CMakeFiles/vmc.dir/Hamiltonians/ellipticOscillator.obj	1c1b1c305f6bc791
+1	895	638580477	CMakeFiles/vmc.dir/WaveFunctions/correlatedGaussian.obj	7b246db92c621bf0
+1	652	638589915	CMakeFiles/vmc.dir/main.obj	7c7b2192b86e0f80
+652	829	638589915	vmc.exe	259a57ab8ec69963
+1	519	638590118	CMakeFiles/vmc.dir/main.obj	7c7b2192b86e0f80
+519	648	638590118	vmc.exe	259a57ab8ec69963
+1	542	638590295	CMakeFiles/vmc.dir/main.obj	7c7b2192b86e0f80
+542	676	638590295	vmc.exe	259a57ab8ec69963
