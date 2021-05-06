@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.3}{Theory}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{The Variational method}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{The Metropolis Algorithm}{section.3}% 5
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Metropolis- Hastings}{subsection.3.2}% 6
+\BOOKMARK [2][-]{subsection.3.3}{Hamiltonian}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.4}{Trial Wave Function}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Drift Force}{subsection.3.4}% 9
+\BOOKMARK [2][-]{subsection.3.5}{Interacting bosons in elliptical HO}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.6}{Finding the optimal variational parameter}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Post Analysis and Error Estimation}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Parallelization}{section.4}% 14
+\BOOKMARK [1][-]{section.5}{Results}{}% 15
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 16
+\BOOKMARK [1][-]{section.7}{Appendix A}{}% 17

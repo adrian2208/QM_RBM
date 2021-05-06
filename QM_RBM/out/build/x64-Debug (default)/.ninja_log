@@ -1,0 +1,22 @@
+# ninja log v5
+0	273	642039188	CMakeFiles/QM_RBM.dir/QM_RBM.cpp.obj	49f47efbff2b53ec
+273	471	642039189	QM_RBM.exe	ff3e8c36e8ae7fea
+2	199	642039729	build.ninja	8f23db1710e93d6e
+25	530	642039730	CMakeFiles/QM_RBM.dir/Hamiltonians/hamiltonian.cpp.obj	671f8c6c7207bc00
+10	533	642039729	CMakeFiles/QM_RBM.dir/particle.cpp.obj	1f28cd5b9a7b8e32
+30	534	642039729	CMakeFiles/QM_RBM.dir/InitialStates/initialstate.cpp.obj	648fa3dbdc449d98
+8	543	642039729	CMakeFiles/QM_RBM.dir/WaveFunctions/wavefunction.cpp.obj	4888db740edbba4d
+28	560	642039730	CMakeFiles/QM_RBM.dir/InitialStates/randomuniform.cpp.obj	105d11fc90fd2ed1
+23	570	642039730	CMakeFiles/QM_RBM.dir/Hamiltonians/harmonicoscillator.cpp.obj	9151990c84f4490e
+2	590	642039730	CMakeFiles/QM_RBM.dir/WaveFunctions/simplegaussian.cpp.obj	ccca04ed5f9ab69
+18	605	642039730	CMakeFiles/QM_RBM.dir/sampler_gd.cpp.obj	fac33f7f12d2036f
+0	644	642039730	CMakeFiles/QM_RBM.dir/Hamiltonians/ellipticOscillator.cpp.obj	2438c33cea44e94f
+15	676	642039730	CMakeFiles/QM_RBM.dir/system.cpp.obj	79fe25cefc319fd
+4	682	642039730	CMakeFiles/QM_RBM.dir/WaveFunctions/correlatedGaussian.cpp.obj	196650a3b60bf62a
+13	709	642039730	CMakeFiles/QM_RBM.dir/QM_RBM.cpp.obj	eb92ec63824db972
+21	717	642039730	CMakeFiles/QM_RBM.dir/sampler.cpp.obj	4542947650404705
+717	1001	642039730	QM_RBM.exe	a9ce44a8aab35e9c
+1	349	642039892	CMakeFiles/QM_RBM.dir/QM_RBM.cpp.obj	eb92ec63824db972
+349	474	642039892	QM_RBM.exe	a9ce44a8aab35e9c
+0	337	642040036	CMakeFiles/QM_RBM.dir/QM_RBM.cpp.obj	eb92ec63824db972
+337	599	642040036	QM_RBM.exe	a9ce44a8aab35e9c

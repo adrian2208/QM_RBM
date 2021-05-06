@@ -1,3 +1,0 @@
-C:/Users/adria/Documents/Studier/Master/FYS4411/variational-monte-carlo-fys4411/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
-C:/Users/adria/Documents/Studier/Master/FYS4411/variational-monte-carlo-fys4411/out/build/x64-Debug (default)/CMakeFiles/vmc.dir
-C:/Users/adria/Documents/Studier/Master/FYS4411/variational-monte-carlo-fys4411/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir

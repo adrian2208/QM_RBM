@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Abstract}{3}{section.1}%
+\contentsline {section}{\numberline {2}Introduction}{3}{section.2}%
+\contentsline {section}{\numberline {3}Theory}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Variational method}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Metropolis Algorithm}{3}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Metropolis- Hastings}{3}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}Hamiltonian}{3}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Trial Wave Function}{3}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Drift Force}{3}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.5}Interacting bosons in elliptical HO}{3}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Finding the optimal variational parameter}{3}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Implementation}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Post Analysis and Error Estimation}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Parallelization}{3}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Results}{3}{section.5}%
+\contentsline {section}{\numberline {6}Conclusion}{3}{section.6}%
+\contentsline {section}{\numberline {7}Appendix A}{3}{section.7}%

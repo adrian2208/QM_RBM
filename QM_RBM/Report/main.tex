@@ -1,0 +1,175 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{braket}
+\usepackage{csvsimple}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,
+    urlcolor=cyan,
+    citecolor=black,
+}
+\usepackage{tikz}
+\usetikzlibrary{calc,patterns,angles,quotes,shapes.geometric, arrows}
+
+\def\layersep{2.5cm}
+\def\layersepSmall{1.2cm}
+
+\tikzstyle{train} = [rectangle, rounded corners, minimum width=2.2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{test} = [rectangle, rounded corners, minimum width=2.2cm, minimum height=1cm,text centered, draw=black, fill=green!30]
+\tikzstyle{data} = [rectangle, rounded corners, minimum width=11.8cm, minimum height=1cm,text centered, draw=black, fill=gray!30]
+\tikzstyle{MSE} = [rectangle, rounded corners, minimum width=1.4cm, minimum height=1cm,text centered, draw=black, fill=orange!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{float}
+%\usepackage{mathtools}
+\usepackage{bm}
+\usepackage[margin=1in]{geometry}
+
+\title{Ground state energy of hard sphere Bose gas in Elliptical HO potential by VMC methods}
+\author{Adrian Martinsen Kleven}
+\date{Autumn 2020}
+\usepackage{hyperref}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\graphicspath{{../Results/Report_Results/}} %Setting the graphicspath
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+\section{Abstract}
+
+
+\section{Introduction}
+
+
+\section{Theory}
+\subsection{The Variational method}
+
+\subsection{The Metropolis Algorithm}
+
+\subsubsection{Metropolis- Hastings}
+
+\subsection{Hamiltonian}
+
+\subsection{Trial Wave Function}
+
+ 
+\subsubsection{Drift Force}
+
+\subsection{Interacting bosons in elliptical HO}
+
+
+\subsection{Finding the optimal variational parameter}
+
+
+\section{Implementation}
+
+\subsection{Post Analysis and Error Estimation}
+The post analysis involved printing the energy at each sampling stage to file, then analysing it using Python. The error estimates for the expectation value of the local energy were evaluated using Marius Jonsson's Blocking code \cite{PhysRevE.98.043304}.
+\subsection{Parallelization}
+Building a solution for c++ in Visual Studio in x- 64 release mode, automatically vectorizes and parallelizes many loops that don't have dependencies that can't be parallelized. The only loop to be explicitly parallelized in the program was a grid search in the $\alpha$ parameter space, with each thread handling a unique value of $\alpha$. This loop was parallelized using OpenMP \cite{openmp08}.
+\section{Results}
+
+
+
+\section{Conclusion}
+
+
+\section{Appendix A}\label{app_A}
+We rewrite 
+\begin{equation*}
+\Psi_T(\mathbf{r})=\Psi_T(\mathbf{r}_1, \mathbf{r}_2, \dots \mathbf{r}_N,\alpha,\beta)
+=\left[
+    \prod_i g(\alpha,\beta,\mathbf{r}_i)
+\right]
+\left[
+    \prod_{j<k}f(a,|\mathbf{r}_j-\mathbf{r}_k|)
+\right],
+\end{equation*}
+as
+
+\begin{equation*}
+\Psi_T(\mathbf{r})=\left[
+    \prod_i g(\alpha,\beta,\mathbf{r}_i)
+\right]
+\exp{\left(\sum_{j<k}u(r_{jk})\right)}
+\end{equation*}
+where we have defined $r_{ij}=|\mathbf{r}_i-\mathbf{r}_j|$
+and
+
+\begin{equation*}
+   f(r_{ij})= \exp{\left(u(r_{ij})\right)},
+\end{equation*}
+with $u(r_{ij})=\ln{f(r_{ij})}$.
+We also write
+
+\begin{equation*}
+    g(\alpha,\beta,\mathbf{r}_i) = \exp{\left[-\alpha(x_i^2+y_i^2+\beta
+    z_i^2)\right]}= \phi(\mathbf{r}_i).
+\end{equation*}
+Starting with the gradient, we get
+\begin{equation}
+  \nabla_k\Psi_T(\mathbf{r}) = \exp{\left(\sum_{j<m}u(r_{jm})\right)}\nabla_k\left[\prod_{i}\phi(\mathbf{r}_i)\right] + \left[\prod_{i}\phi(\mathbf{r}_i)\right]\nabla_k\exp{\left(\sum_{j<m}u(r_{jm})\right)}
+\end{equation}
+solving each gradient separately, we get
+\begin{equation*}
+\nabla_k\left[\prod_{i}\phi(\mathbf{r}_i)\right] = \nabla_k\phi(\mathbf{r}_k)\left[\prod_{i\ne k}\phi(\mathbf{r}_i)\right]
+\end{equation*}
+and 
+\begin{equation*}
+\nabla_k\exp{\left(\sum_{i<k}u(r_{ik})\right)} = \exp{\left(\sum_{j<m}u(r_{jm})\right)}\sum_{l\ne k}\nabla_k u(r_{kl})
+\end{equation*}
+giving us 
+\begin{align*}
+  \nabla_k\Psi_T(\mathbf{r}) &= \nabla_k\phi(\mathbf{r}_k)\left[\prod_{i\ne k}\phi(\mathbf{r}_i)\right]\exp{\left(\sum_{j<m}u(r_{jm})\right)}
+  \\
+  &\qquad
+  +  \left[\prod_i\phi(\mathbf{r}_i)\right]
+  \exp{\left(\sum_{j<m}u(r_{jm})\right)}\sum_{l\ne k}\nabla_k u(r_{kl}),
+\end{align*}
+From here, we need to find the Laplacian. We accomplish this by taking the scalar product of the gradient we just got, with the gradient operator. Solving each term in turn, we get
+\begin{equation*}
+\left[\prod_{i\ne k}\phi(\mathbf{r}_i)\right]\left( \nabla_k^2\phi(\mathbf{r}_k) \exp{\left(\sum_{j<m}u(r_{jm})\right)} + \nabla_k\phi(\mathbf{r}_k)\nabla_k\exp{\left(\sum_{j<m}u(r_{jm})\right)}\right)
+\end{equation*}
+\begin{equation*}
+= \left[\prod_{i\ne k}\phi(\mathbf{r}_i)\right]\exp{\left(\sum_{j<m}u(r_{jm})\right)}\left( \nabla_k^2\phi(\mathbf{r}_k)  + \nabla_k\phi(\mathbf{r}_k)\left(\sum_{j\ne k}\frac{(\mathbf{r}_k-\mathbf{r}_j)}{r_{kj}}u'(r_{kj})\right)\right)
+\end{equation*}
+and for the second term, 
+\begin{equation*}
+\nabla_k\phi(\mathbf{r}_k)\left[\prod_{i\ne k}\phi(\mathbf{r}_i)\right]\exp{\left(\sum_{j<m}u(r_{jm})\right)}\sum_{l\ne k}\nabla_k u(r_{kl}) + 
+\end{equation*}
+\begin{equation*}
+\left[\prod_{i}\phi(\mathbf{r}_i)\right]\exp{\left(\sum_{j<m}u(r_{jm})\right)}\left(\sum_{j\ne k}\frac{(\mathbf{r}_k-\mathbf{r}_j)}{r_{kj}}u'(r_{kj})\right)\sum_{l\ne k}\nabla_k u(r_{kl}) + 
+\end{equation*}
+\begin{equation*}
+\left[\prod_i\phi(\mathbf{r}_i)\right]
+  \exp{\left(\sum_{j<m}u(r_{jm})\right)}\nabla_k\sum_{l\ne k}\nabla_k u(r_{kl}).
+\end{equation*}
+We can now resolve the last of the gradients while dividing every term by the trial wave function, this in turn, gets us the final expression for the normalized Laplacian of the trial wave function
+
+\begin{align}
+   \frac{1}{\Psi_T(\mathbf{r})}\nabla_k^2\Psi_T(\mathbf{r})
+   &= \frac{\nabla_k^2\phi(\mathbf{r}_k)}{\phi(\mathbf{r}_k)}
+   + 2\frac{\nabla_k\phi(\mathbf{r}_k)}{\phi(\mathbf{r}_k)}
+   \left(\sum_{j\ne k}\frac{(\mathbf{r}_k-\mathbf{r}_j)}{r_{kj}}u'(r_{kj})\right)
+   \\
+   &\qquad
+   + \sum_{i\ne k}\sum_{j \ne k}\frac{(\mathbf{r}_k-\mathbf{r}_i)(\mathbf{r}_k-\mathbf{r}_j)}{r_{ki}r_{kj}}u'(r_{ki})u'(r_{kj})
+   \\
+   &\qquad
+   + \sum_{j\ne k}\left( u''(r_{kj})+\frac{2}{r_{kj}}u'(r_{kj})\right).
+\end{align}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
