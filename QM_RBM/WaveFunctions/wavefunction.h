@@ -1,24 +1,48 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "system.h"
 
 
 class WaveFunction {
 public:
     WaveFunction(class System* system);
-    int     getNumberOfParameters() { return m_numberOfParameters; }
-    std::vector<double> getParameters() { return m_parameters; }
-    virtual double evaluate(std::vector<class Particle*> particles) = 0;
-    virtual double evaluate(std::vector<class Particle*> particles, int particleIndex) {
-        return evaluate(particles);
-    }
-    virtual double computeVariationalDerivative(std::vector<class Particle*> particles) = 0;
-    virtual double localEnergyDerivative() = 0;
-    virtual double computeDoubleDerivative(std::vector<class Particle*> particles) = 0;
-    virtual std::vector<double> driftTerm(std::vector<class Particle*> particles, int indx) =0;
+
+    virtual double evaluate() = 0;
+    virtual double evaluate(int ParticleIndx) = 0;
+
+    virtual std::vector<double> computeVariationalDerivative() = 0;
+    virtual double computeDoubleDerivative() = 0;
+    virtual std::vector<double> driftTerm(int indx) =0;
     virtual std::string getName() = 0;
+    virtual void adjustPosition(int node, double dx) = 0;
+    virtual void setPosition(int node, double x) = 0;
+    virtual void OptimizeParameters(std::vector<double>& ParameterGradientVector)=0;
+    virtual std::vector<double> getParticlePosition(int ParticleIndx) = 0;
+    int getNrVisibleNodes();
+    int getNrHiddenNodes();
+    int getNrDimensions();
+    int getNrParticles();
+    int getNrParameters();
+    std::vector<double> getX();
+
+
+    double** m_W = nullptr;
+    std::vector<double> m_X = std::vector<double>();
+    std::vector<double> m_H = std::vector<double>();
+    std::vector<double> m_a = std::vector<double>();
+    std::vector<double> m_b = std::vector<double>();
+
+
 protected:
-    int     m_numberOfParameters = 0;
-    std::vector<double> m_parameters = std::vector<double>();
+    int m_NrVisibleNodes = 0;
+    int m_NrHiddenNodes = 0;
+    int m_NrDimensions = 0;
+    int m_NrParticles = 0;
+    int m_NrParameters = 0;
+    double m_sigma = 0;
+    double m_sigmaSquared = 0;
+    double m_oneOverSigmaSquared = 0;
+
     class System* m_system = nullptr;
 };

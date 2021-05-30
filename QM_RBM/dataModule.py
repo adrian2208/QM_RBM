@@ -203,7 +203,7 @@ def getRunType(FilePath):
 
 
 
-def createFig(x,y,error, title, x_label, y_label, legend, errorbars = False, savefig = True, showfig = False, elapsedTime = []):
+def createMultiPlot(x,y,error, title="", x_label="", y_label="", legend=[], errorbars = False, savefig = True, showfig = False, elapsedTime = []):
 	""" 
 	enter x, y and error each as an array of arrays containing the plotting data for each
     plot line 
@@ -237,6 +237,33 @@ def createFig(x,y,error, title, x_label, y_label, legend, errorbars = False, sav
 		plt.title(title)
 		figPath = ".\\Results\\{}_.pdf".format(title)
 		plt.savefig(figPath)
+
+
+def createPlot(x,y,error=[], filename="", x_label="", y_label="", savefig = True, showfig = False):
+	""" 
+	enter x, y and error each as an array of arrays containing the plotting data for each
+    plot line 
+    """
+	plt.style.use("ggplot")
+
+	plt.figure()
+	plt.xlabel(x_label)
+	plt.ylabel(y_label)
+
+	if not (error == []) :
+		for i in range(len(x)):
+			plt.errorbar(x[i],y[i],error[i])
+
+	else:
+		for i in range(len(x)):
+			plt.plot(x[i],y[i])
+
+	if (showfig):
+		plt.show()
+	if (savefig):
+		figPath = ".\\Results\\{}.pdf".format(filename)
+		plt.savefig(figPath)
+
 
 def createMatrixPlot(matrix):
 	""" 

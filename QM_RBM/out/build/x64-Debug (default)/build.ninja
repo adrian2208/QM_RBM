@@ -43,105 +43,65 @@ include CMakeFiles\rules.ninja
 
 build cmake_object_order_depends_target_QM_RBM: phony || CMakeFiles\QM_RBM.dir
 
-build CMakeFiles\QM_RBM.dir\Hamiltonians\ellipticOscillator.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\Hamiltonians\ellipticOscillator.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+build CMakeFiles\QM_RBM.dir\Hamiltonians\InteractingOscillator.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\Hamiltonians\InteractingOscillator.cpp || cmake_object_order_depends_target_QM_RBM
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\Hamiltonians
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
 build CMakeFiles\QM_RBM.dir\Hamiltonians\hamiltonian.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\Hamiltonians\hamiltonian.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\Hamiltonians
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
 build CMakeFiles\QM_RBM.dir\Hamiltonians\harmonicoscillator.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\Hamiltonians\harmonicoscillator.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\Hamiltonians
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
-build CMakeFiles\QM_RBM.dir\InitialStates\initialstate.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\InitialStates\initialstate.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
-  OBJECT_DIR = CMakeFiles\QM_RBM.dir
-  OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\InitialStates
-  TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
-  TARGET_PDB = QM_RBM.pdb
-
-build CMakeFiles\QM_RBM.dir\InitialStates\randomuniform.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\InitialStates\randomuniform.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
-  OBJECT_DIR = CMakeFiles\QM_RBM.dir
-  OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\InitialStates
-  TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
-  TARGET_PDB = QM_RBM.pdb
-
 build CMakeFiles\QM_RBM.dir\QM_RBM.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\QM_RBM.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
-build CMakeFiles\QM_RBM.dir\WaveFunctions\correlatedGaussian.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\WaveFunctions\correlatedGaussian.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
-  OBJECT_DIR = CMakeFiles\QM_RBM.dir
-  OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\WaveFunctions
-  TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
-  TARGET_PDB = QM_RBM.pdb
-
-build CMakeFiles\QM_RBM.dir\WaveFunctions\simplegaussian.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\WaveFunctions\simplegaussian.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+build CMakeFiles\QM_RBM.dir\WaveFunctions\qnet.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\WaveFunctions\qnet.cpp || cmake_object_order_depends_target_QM_RBM
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\WaveFunctions
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
 build CMakeFiles\QM_RBM.dir\WaveFunctions\wavefunction.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\WaveFunctions\wavefunction.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir\WaveFunctions
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
-build CMakeFiles\QM_RBM.dir\particle.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\particle.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
-  OBJECT_DIR = CMakeFiles\QM_RBM.dir
-  OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir
-  TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
-  TARGET_PDB = QM_RBM.pdb
-
 build CMakeFiles\QM_RBM.dir\sampler.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\sampler.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
-  OBJECT_DIR = CMakeFiles\QM_RBM.dir
-  OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir
-  TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
-  TARGET_PDB = QM_RBM.pdb
-
-build CMakeFiles\QM_RBM.dir\sampler_gd.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\sampler_gd.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
   TARGET_PDB = QM_RBM.pdb
 
 build CMakeFiles\QM_RBM.dir\system.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\system.cpp || cmake_object_order_depends_target_QM_RBM
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
-  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\InitialStates -I..\..\..\Math -I..\..\..\WaveFunctions
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
+  INCLUDES = -I..\..\..\. -I..\..\..\Hamiltonians -I..\..\..\Math -I..\..\..\WaveFunctions
   OBJECT_DIR = CMakeFiles\QM_RBM.dir
   OBJECT_FILE_DIR = CMakeFiles\QM_RBM.dir
   TARGET_COMPILE_PDB = CMakeFiles\QM_RBM.dir\
@@ -155,8 +115,8 @@ build CMakeFiles\QM_RBM.dir\system.cpp.obj: CXX_COMPILER__QM_RBM_Debug ..\..\..\
 #############################################
 # Link the executable QM_RBM.exe
 
-build QM_RBM.exe: CXX_EXECUTABLE_LINKER__QM_RBM_Debug CMakeFiles\QM_RBM.dir\Hamiltonians\ellipticOscillator.cpp.obj CMakeFiles\QM_RBM.dir\Hamiltonians\hamiltonian.cpp.obj CMakeFiles\QM_RBM.dir\Hamiltonians\harmonicoscillator.cpp.obj CMakeFiles\QM_RBM.dir\InitialStates\initialstate.cpp.obj CMakeFiles\QM_RBM.dir\InitialStates\randomuniform.cpp.obj CMakeFiles\QM_RBM.dir\QM_RBM.cpp.obj CMakeFiles\QM_RBM.dir\WaveFunctions\correlatedGaussian.cpp.obj CMakeFiles\QM_RBM.dir\WaveFunctions\simplegaussian.cpp.obj CMakeFiles\QM_RBM.dir\WaveFunctions\wavefunction.cpp.obj CMakeFiles\QM_RBM.dir\particle.cpp.obj CMakeFiles\QM_RBM.dir\sampler.cpp.obj CMakeFiles\QM_RBM.dir\sampler_gd.cpp.obj CMakeFiles\QM_RBM.dir\system.cpp.obj
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc -g
+build QM_RBM.exe: CXX_EXECUTABLE_LINKER__QM_RBM_Debug CMakeFiles\QM_RBM.dir\Hamiltonians\InteractingOscillator.cpp.obj CMakeFiles\QM_RBM.dir\Hamiltonians\hamiltonian.cpp.obj CMakeFiles\QM_RBM.dir\Hamiltonians\harmonicoscillator.cpp.obj CMakeFiles\QM_RBM.dir\QM_RBM.cpp.obj CMakeFiles\QM_RBM.dir\WaveFunctions\qnet.cpp.obj CMakeFiles\QM_RBM.dir\WaveFunctions\wavefunction.cpp.obj CMakeFiles\QM_RBM.dir\sampler.cpp.obj CMakeFiles\QM_RBM.dir\system.cpp.obj
+  FLAGS = /openmp /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\QM_RBM.dir

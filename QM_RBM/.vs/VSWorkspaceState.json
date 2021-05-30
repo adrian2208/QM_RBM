@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Hamiltonians",
+    "\\Math",
+    "\\Output",
+    "\\Results",
+    "\\Selected_Runs",
+    "\\WaveFunctions"
   ],
-  "SelectedNode": "\\CMakeLists.txt",
+  "SelectedNode": "\\Output",
   "PreviewInSolutionExplorer": false
 }

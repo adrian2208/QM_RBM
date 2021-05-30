@@ -2,172 +2,245 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <utility>
 #include <omp.h>
+#include <numeric>
 #include "system.h"
-#include "particle.h"
+#include "sampler.h"
 #include "WaveFunctions/wavefunction.h"
-#include "WaveFunctions/simplegaussian.h"
-#include "WaveFunctions/correlatedGaussian.h"
+#include "WaveFunctions/qnet.h"
 #include "Hamiltonians/hamiltonian.h"
 #include "Hamiltonians/harmonicoscillator.h"
-#include "Hamiltonians/ellipticOscillator.h"
-#include "InitialStates/initialstate.h"
-#include "InitialStates/randomuniform.h"
+#include "Hamiltonians/InteractingOscillator.h"
 #include "Math/random.h"
 #include "Benchmark.h"
-#include "runtype.h"
-#include "sampler_gd.h"
+#include "csvHandler.h"
+#include "QM_RBM.h"
 
 using namespace std;
 
 //////////  MAIN BODY  /////////
 
 int main(int argc, char const* argv[]) {
-
-    BruteForce_MC(argc, argv);
+    
+    //GradientDescent(0.1,2,true,80,true);
+    //sigmaSearch();
+    ParameterSweep(0.01, 0.01, 6, 8,1, true,200,true,true,2,2);
+    //GradientDescent(0.05, 2, true, 200, true, false,2,2,2020);
+    //GradientDescent(0.05, 2, true, 100, false, false, 2, 2, 2020);
 
     return 0;
 }
 
 //////////  FUNCTION DEFINITIONS /////////
+void PositionSampling(int NrParticles,int NrHiddenNodes, bool interacting, bool importanceSampling,  int seed,bool optimize) {
+    double sigma = 1.0;
+    double sigma0 = 0.001;
+    double omega = 1.0;
+    double equilibrationFraction = 0.8;
+    int NrMetropolisSteps = pow(2, 19);
+    int NrDimensions = 2;
 
-void BruteForce_MC(int argc, char const* argv[]) {
-    std::cout << "Running Brute-Force Monte Carlo....\n";
+    //Hyper Parameters
+    double stepLength = 0.1;
+    double timeStep = 0.45;
 
-    // Seed for the random number generator
-    int seed = 2020;
+    //Position sampling lengths
+    int posSampLen = 300;
 
-    int numberOfDimensions = 3;
-    int numberOfParticles = 3;
-    int numberOfSteps = pow(2, 15);
-    double omega = 1.0;           // Oscillator frequency.
-    double alpha = 0.5;           // Variational parameter.
-    double stepLength = 0.1;       // Metropolis step length.
-    double equilibration = 0.8;    // Amount of the total steps used
-    double driftCoeff = 0.5;       // coeff. D used in MALA
-    double timeStep = 0.01;
-    std::string FileOptString = ""; // If empty, no file is printed
-
-
-    if (argc > 1) {
-        try {
-            numberOfDimensions = atoi(argv[1]);
-            numberOfParticles = atoi(argv[2]);
-            numberOfSteps = atoi(argv[3]);
-            alpha = atof(argv[4]);        // Variational parameter.
-            timeStep = atof(argv[5]);     //Provides an additional identifier at the end of the output file name
-            FileOptString = argv[6];
-        }
-        catch (int c) {
-            std::cout << "Error: " << c << ". Enough input arguments?";
-        }
+    System* system = new System();
+    if (interacting) {
+        system->setHamiltonian(new InteractingOscillator(system, omega, NrParticles));
+    }
+    else {
+        system->setHamiltonian(new HarmonicOscillator(system, omega));
     }
 
+    system->setWaveFunction(new qnet(system, NrDimensions, NrParticles, NrHiddenNodes, sigma, sigma0));
+    system->setSampler(new Sampler(system));
+    system->setEquilibrationFraction(equilibrationFraction);
+
+    if (optimize){
+        std::vector<std::pair<std::string, std::vector<double>>> datastruct = std::vector<std::pair<std::string, std::vector<double>>>();
+        system->runOptimizationSteps(NrMetropolisSteps, 200, timeStep, 0.01, datastruct, importanceSampling, true);
+        system->setSampler(new Sampler(system));
+    }
+
+    system->getSampler()->SetupPositionSampling(posSampLen, 3);
+    
+    //Outputfile Management
+    std::string descriptor = "Position_sampling_P_" + to_string(NrParticles) + "_NH_" + to_string(NrHiddenNodes) + "_I_" + to_string(interacting);
+    std::string fileName;
+    std::string csvComment = "#Position Sampling\n# HyperParameters:P" + to_string(NrParticles) + "_NH_" + to_string(NrHiddenNodes) + "_I_" + to_string(interacting);
+    
+    if (importanceSampling) {
+        system->runMALASteps(NrMetropolisSteps, timeStep);
+    }
+    else {
+        system->runMetropolisSteps(NrMetropolisSteps, stepLength);
+    }
+
+    //Create the Output file
+    fileName = system->getSampler()->GenerateFileName(descriptor);
+    csvHandler outputFile(fileName, csvComment);
+    outputFile.WriteMatrixToFile(system->getSampler()->getParticlePos_matrix(), posSampLen);
+}
+
+void ParameterSweep(double LR_min, double LR_max, int NH_min, int NH_max, int Nrsamples, bool interacting, int NrLearningSteps, bool importanceSampling, bool OnlyLastEnergies, int NrParticles, int NrDimensions) {
+    int NrThreads = 6;
+    std::vector<double> LRs = linspace(LR_min, LR_max, Nrsamples);
+    int NrNHS = NH_max - NH_min + 1;
+    std::vector<int> NHs(NrNHS);
+    std::iota(std::begin(NHs), std::end(NHs), NH_min);
+    
+    #pragma omp parallel for collapse(2)
+    for (int i = 0; i < Nrsamples; i++) {
+        for (int j = 0; j < NrNHS; j++) {
+            int id = omp_get_thread_num();
+            std::cout << "thread id: " << id << "\n";// "   Learning Rate: " << LRs[i] << "   #Hidden: " << NHs[j] << "\n";
+            GradientDescent(LRs[i], NHs[j], interacting, NrLearningSteps,importanceSampling,OnlyLastEnergies,NrParticles,NrDimensions);
+        }
+    }
+}
+
+void GradientDescent(double LearningRate, int NrHiddenNodes, bool interacting, int NrLearningSteps, bool importanceSampling, bool OnlyLastEnergies, int NrParticles, int NrDimensions) {
+    double sigma = 1.0;
+    double sigma0 = 0.001;
+    double omega = 1.0;
+    double equilibrationFraction = 0.8;
+    int NrMetropolisSteps = pow(2, 19);
+   
+    //Hyper Parameters
+    double stepLength = 0.1;
+    double timeStep = 0.45;
+
+    System* system = new System();
+    if (interacting) {
+        system->setHamiltonian(new InteractingOscillator(system, omega, NrParticles));
+    }
+    else {
+        system->setHamiltonian(new HarmonicOscillator(system, omega));
+    }
+
+    system->setWaveFunction(new qnet(system, NrDimensions, NrParticles, NrHiddenNodes, sigma, sigma0));
+    system->setSampler(new Sampler(system));
+    system->setEquilibrationFraction(equilibrationFraction);
+
+    //Outputfile Management
+    std::vector<std::pair<std::string, std::vector<double>>> datastruct = std::vector<std::pair<std::string, std::vector<double>>>();
+    std::string descriptor = "GD_ls_v_E_LR_" + to_string(LearningRate) + "_NH_" + to_string(NrHiddenNodes);
+    std::string fileName;
+    std::string csvComment = "#Energy over gradient descent step\n# HyperParameters: LR = " + to_string(LearningRate) + ", NH = " + to_string(NrHiddenNodes) + ", sigma = " + to_string(sigma);
+    system->runOptimizationSteps(NrMetropolisSteps, NrLearningSteps, timeStep, LearningRate, datastruct, importanceSampling,OnlyLastEnergies);
+    //Create the Output file
+    fileName = system->getSampler()->GenerateFileName(descriptor);
+    csvHandler outputFile(fileName, csvComment);
+    outputFile.WriteToCSV(datastruct);
+}
+void GradientDescent(double LearningRate, int NrHiddenNodes, bool interacting, int NrLearningSteps, bool importanceSampling, bool OnlyLastEnergies, int NrParticles, int NrDimensions, int seed) {
+    double sigma = 1.0;
+    double sigma0 = 0.001;
+    double omega = 1.0;
+    double equilibrationFraction = 0.8;
+    int NrMetropolisSteps = pow(2, 19);
+
+    //Hyper Parameters
+    double stepLength = 0.1;
+    double timeStep = 0.45;
 
     System* system = new System(seed);
-    system->setHamiltonian(new HarmonicOscillator(system, omega));
-    system->setWaveFunction(new SimpleGaussian(system, alpha));
-    system->setInitialState(new RandomUniform(system, numberOfDimensions, numberOfParticles));
-    system->setSampler(new Sampler(system));
-    system->setEquilibrationFraction(equilibration);
-    system->setStepLength(stepLength);
-    system->setDriftCoefficient(stepLength);
-    system->setFileOptString(FileOptString);
-
-    int NrSamplingLengths = 50;
-    system->getSampler()->SetupPositionSampling(NrSamplingLengths, 3);
-
-    double elapsed;
-    {
-        Timer timer("Brute-Force MC", system);
-        system->runMetropolisSteps(numberOfSteps);
+    if (interacting) {
+        system->setHamiltonian(new InteractingOscillator(system, omega, NrParticles));
     }
-    int** matrix = system->getSampler()->getParticlePos_matrix();
+    else {
+        system->setHamiltonian(new HarmonicOscillator(system, omega));
+    }
 
-    printMatrixToFile(system->getWaveFunction()->getName(), system->getHamiltonian()->getName(), FileOptString, matrix, NrSamplingLengths);
+    system->setWaveFunction(new qnet(system, NrDimensions, NrParticles, NrHiddenNodes, sigma, sigma0));
+    system->setSampler(new Sampler(system));
+    system->setEquilibrationFraction(equilibrationFraction);
 
-    elapsed = system->getElapsedTime();
-    printEnergyToFile(system->getWaveFunction()->getName(), system->getHamiltonian()->getName(), FileOptString, system->getSampler()->getEnergyVector());
-    printTimeToFile(system->getWaveFunction()->getName(), system->getHamiltonian()->getName(), FileOptString, elapsed);
-    printAcceptedToFile(system->getWaveFunction()->getName(), system->getHamiltonian()->getName(), FileOptString, system->getSampler()->getNumberAccepted() / numberOfSteps);
+    //Outputfile Management
+    std::vector<std::pair<std::string, std::vector<double>>> datastruct = std::vector<std::pair<std::string, std::vector<double>>>();
+    std::string descriptor = "GD_ls_v_E_LR_" + to_string(LearningRate) + "_NH_" + to_string(NrHiddenNodes);
+    std::string fileName;
+    std::string csvComment = "#Energy over gradient descent step\n# HyperParameters: LR = " + to_string(LearningRate) + ", NH = " + to_string(NrHiddenNodes) + ", sigma = " + to_string(sigma);
+    system->runOptimizationSteps(NrMetropolisSteps, NrLearningSteps, timeStep, LearningRate, datastruct, importanceSampling, OnlyLastEnergies);
+    //Create the Output file
+    fileName = system->getSampler()->GenerateFileName(descriptor);
+    csvHandler outputFile(fileName, csvComment);
+    outputFile.WriteToCSV(datastruct);
 }
+
+void sigmaSweep() {
+
+    bool interaction = true;
+    bool importanceSampling = true;
+    int NrDimensions = 2;
+    int NrParticles = 2;
+    int NrHiddenNodes = 2;
+
+    double equilibrationFraction = 0.5;
+    int NrMetropolisSteps = pow(2, 18);
+
+    //Hyper Parameters
+    double sigma0 = 0.001;
+    double omega = 1.0;
+    double stepLength = 0.2;
+    double timeStep = 0.3;
+
+    double startSigma = 0.8;
+    double stopSigma = 2.8;
+    int NrSigmas = 50;
+    std::vector<double> sigma = linspace(startSigma,stopSigma,NrSigmas);
+
+    //Outputfile Management
+    std::vector<std::pair<std::string, std::vector<double>>> datastruct = std::vector<std::pair<std::string, std::vector<double>>>();
+    std::string descriptor = "test";
+    std::string fileName;
+    std::string csvComment = "#columns of energies for blocking sampled at different sigma\n# HyperParameters: SL = " + to_string(stepLength) + ", TS = " + to_string(timeStep)+", NH = " + to_string(NrHiddenNodes);
+    datastruct.push_back({ "Sigma vals",sigma });
+
+    for (int i = 0; i < NrSigmas; i++) {
+
+        //setup
+        System* system = new System();
+        if (interaction){
+            system->setHamiltonian(new InteractingOscillator(system, omega, NrParticles));
+        }
+        else{
+            system->setHamiltonian(new HarmonicOscillator(system, omega));
+        }
+        system->setWaveFunction(new qnet(system, NrDimensions, NrParticles, NrHiddenNodes, sigma[i], sigma0));
+        system->setSampler(new Sampler(system));
+        system->setEquilibrationFraction(equilibrationFraction);
+        
+        //run
+        if (importanceSampling){
+            system->runMALASteps(NrMetropolisSteps, timeStep);
+        }
+        else {
+            system->runMetropolisSteps(NrMetropolisSteps, stepLength);
+        }
+        //Data Handling
+        datastruct.push_back({ "sigma:" + to_string(sigma[i]),system->getSampler()->getEnergyVector() });
+        fileName = system->getSampler()->GenerateFileName(descriptor);
+    }
+    //Create the Output file
+    csvHandler outputFile(fileName,csvComment);
+    outputFile.WriteToCSV(datastruct);
+}
+
 
 
 ///////////////////////////////////////////
-
-
-void printEnergyToFile(std::string WF, std::string H, std::string fileOptString, std::vector<double> energies) {
-    //std::string WF = system->getWaveFunction()->getName();
-    //std::string H = system->getHamiltonian()->getName();
-
-
-    //IMPORTANT: when this program is executed through python, the root directory is assumed to be 
-    //the directory of the python program, not the executable, meaning the path below 
-    // will output to variational-monte-carlo-fys4411/Output when called from python 
-    // but to a subdirectory in the x64-Release directory when run from the executable
-
-    std::string path = ".\\Output\\" + WF + "_" + H + "_" + fileOptString + "_Energies" + ".csv";
-    std::ofstream OutFile;
-    OutFile.open(path, std::fstream::app);
-    for (double energy : energies) {
-        OutFile << energy << "\n";
+std::vector<double> linspace(double start, double stop, int NrVals) {
+    std::vector<double> output(NrVals);
+    double dist = (stop - start) / (NrVals - 1);
+    output[0] = start;
+    for (int i = 0; i < NrVals-1; i++) {
+        output[i + 1] = output[i] + dist;
     }
-    OutFile.close();
+    return output;
 }
 
-void printAcceptedToFile(std::string WF, std::string H, std::string fileOptString, double accepted) {
-    //IMPORTANT: when this program is executed through python, the root directory is assumed to be 
-    //the directory of the python program, not the executable, meaning the path below 
-    // will output to variational-monte-carlo-fys4411/Output when called from python 
-    // but to a subdirectory in the x64-Release directory when run from the executable
-
-    std::string path = ".\\Output\\" + WF + "_" + H + "_" + fileOptString + "_accepted" + ".csv";
-    std::ofstream OutFile;
-    OutFile.open(path, std::fstream::app);
-    OutFile << accepted << "\n";
-    OutFile.close();
-}
-
-void printTimeToFile(std::string WF, std::string H, std::string fileOptString, double elapsed) {
-    //std::string WF = system->getWaveFunction()->getName();
-    //std::string H = system->getHamiltonian()->getName();
-
-
-    //IMPORTANT: when this program is executed through python, the root directory is assumed to be 
-    //the directory of the python program, not the executable, meaning the path below 
-    // will output to variational-monte-carlo-fys4411/Output when called from python 
-    // but to a subdirectory in the x64-Release directory when run from the executable
-
-    std::string path = ".\\Output\\" + WF + "_" + H + "_" + fileOptString + "_ElapsedTime" + ".csv";
-    std::ofstream OutFile;
-    OutFile.open(path, std::fstream::app);
-    OutFile << elapsed << "\n";
-
-    OutFile.close();
-}
-
-
-
-void printMatrixToFile(std::string WF, std::string H, std::string fileOptString, int** matrix, int NrSamplingLengths) {
-    //std::string WF = system->getWaveFunction()->getName();
-    //std::string H = system->getHamiltonian()->getName();
-
-
-    //IMPORTANT: when this program is executed through python, the root directory is assumed to be 
-    //the directory of the python program, not the executable, meaning the path below 
-    // will output to variational-monte-carlo-fys4411/Output when called from python 
-    // but to a subdirectory in the x64-Release directory when run from the executable
-
-    std::string path = ".\\Output\\" + WF + "_" + H + "_" + fileOptString + "_Matrix" + ".csv";
-    std::ofstream OutFile;
-    OutFile.open(path, std::fstream::app);
-    for (int i = 0; i < NrSamplingLengths; i++) {
-        OutFile << matrix[i][0];
-        for (int j = 1; j < NrSamplingLengths; j++) {
-            OutFile << "," << matrix[i][j];
-        }
-        OutFile << "\n";
-    }
-
-    OutFile.close();
-}

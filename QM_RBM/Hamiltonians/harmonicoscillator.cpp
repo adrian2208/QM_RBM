@@ -2,7 +2,6 @@
 #include <cassert>
 #include <iostream>
 #include "../system.h"
-#include "../particle.h"
 #include "../WaveFunctions/wavefunction.h"
 
 using std::cout;
@@ -12,25 +11,23 @@ HarmonicOscillator::HarmonicOscillator(System* system, double omega) :
            Hamiltonian(system) {
     assert(omega > 0);
     m_omega  = omega;
+    m_omegaSquared = omega * omega;
 }
 
-double HarmonicOscillator::computeLocalEnergy(std::vector<Particle*> particles) {
-    /* Here, you need to compute the kinetic and potential energies. Note that
-     * when using numerical differentiation, the computation of the kinetic
-     * energy becomes the same for all Hamiltonians, and thus the code for
-     * doing this should be moved up to the super-class, Hamiltonian.
-     *
-     * You may access the wave function currently used through the
-     * getWaveFunction method in the m_system object in the super-class, i.e.
-     * m_system->getWaveFunction()...
-     */
+double HarmonicOscillator::computeLocalEnergy(WaveFunction* wavefunction) {
+    std::vector<double> x = wavefunction->getX();
+    int NrParticles = wavefunction->getNrParticles();
+    int NrDimensions = wavefunction->getNrDimensions();
+    int NrVisibleNodes = wavefunction->getNrVisibleNodes();
+    double output = 0;
 
-    double potentialEnergy = 0;
-    double kineticEnergy   = -0.5*m_system->getWaveFunction()->computeDoubleDerivative(particles);
-    int numberOfParticles = m_system->getNumberOfParticles();
-    for (int i = 0; i < numberOfParticles; i++) {
-        potentialEnergy += particles[i]->positionSquared();
+    for (int i = 0; i < NrVisibleNodes; i++) {
+        output += pow(x[i], 2);
     }
-    return (kineticEnergy + potentialEnergy*0.5*m_omega * m_omega);
+    output *= 0.5 * m_omegaSquared;
+    output += wavefunction->computeDoubleDerivative();
+
+
+    return output;
 }
 

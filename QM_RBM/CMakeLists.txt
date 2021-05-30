@@ -21,34 +21,38 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 
-
 # Add all compiler warnings. Remember, a warning in C++ can very often lead to a bug
 # later on so _fix your warnings!_
 ############################################################################################set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 # Add debugging flag for tools such as gdb and valgrind.
-set(CMAKE_CXX_FLAGS_DEBUG "-g")
+
+#                       set(CMAKE_CXX_FLAGS_DEBUG "-g")
+
 # Add full compiler optimization when in the release build type. Other options include
 # -O0, -O1, -O2.
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+#                       set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fopenmp")
+
+set(CMAKE_CXX_FLAGS "/openmp")
+
 
 # Add directories containing header-files
 include_directories(
     .
     Hamiltonians
-    InitialStates
     Math
     WaveFunctions
 )
+
 
 # Add sources from all directories
 file(
     GLOB SOURCES "*.cpp"
     GLOB SOURCES "Hamiltonians/*.cpp"
-    GLOB SOURCES "InitialStates/*.cpp"
     GLOB SOURCES "Math/*.cpp"
     GLOB SOURCES "WaveFunctions/*.cpp"
 )
 
 
 # Create executable called "vmc"
-add_executable(QM_RBM ${SOURCES} "Benchmark.h" "runtype.h" "sampler_gd.h" "sampler_gd.cpp" "Hamiltonians/ellipticOscillator.h" "Hamiltonians/ellipticOscillator.cpp" "WaveFunctions/correlatedGaussian.h" "WaveFunctions/correlatedGaussian.cpp")
+add_executable(QM_RBM ${SOURCES} "Benchmark.h"  "Hamiltonians/InteractingOscillator.h" "Hamiltonians/InteractingOscillator.cpp" "csvHandler.h")

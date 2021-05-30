@@ -4,198 +4,90 @@ import subprocess
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import dataModule as data
-#############################################################
-###################     IMPORTATNT    #######################
-### COMPILE C++ PROGRAM AS X64- RELEASE #####################
-### PYTHON ONLY ACESSES THE X64- RELEASE FOLDER #############
-#############################################################
+import seaborn as sns
+import analysis
 
-###############################################################################
-##############			OUTPUT FILE COLUMN NAME BY INDEX	    ###############
-#PARTICLES[0], #DIMENSIONS[1], #METROPOLIS STEPS[2], EQUILIBRATION FRACTION[3]#
-#ALPHA[4], STEP LENGTH[5], ENERGY[6]	#######################################
+def plot_Energy_v_sigma(filename):
+    # Data importing and conditioning
+    data_array = analysis.csvToArray(filename)
+    energies = data_array[1:]
+    sigmas = data_array[0]
+    #Blocking analysis for errorbars
+    exp_vals, std_devs = analysis.runBlocking(energies)
+    #Plotting
+    analysis.createPlot(sigmas,exp_vals,std_devs,filename,r"$\sigma$", r"$\left\langle E \right\rangle$" )
 
-##############          Alpha dependence - local energy       #################
+def plot_Energy_v_LearningStep(filename):
+    # Data importing and conditioning
+    data_array = analysis.csvToArray(filename)
 
-def plot_Energy_v_alpha_for_DifferentNrParticles(numberOfDimensions, numberOfParticles_list, alphas):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    numberOfSteps       = 2**16
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    x_list = []
-    y_list = []
-    error_list = []
-    legend_list = []
+    energies = data_array
+    learningSteps = np.arange(len(data_array))
+    #Blocking analysis for errorbars
+    exp_vals, std_devs = analysis.runBlocking(energies)
+    #Plotting
+    analysis.createPlot(learningSteps,exp_vals,std_devs,filename,"Learning Step", r"$\left\langle E \right\rangle$" )
 
-    for numberOfParticles in numberOfParticles_list:
-        x,y,errors, NrParticles, NrDims, NrSteps, wf,Hamiltonian, elapsedTime = data.RunVMC_w_blocking(numberOfDimensions,numberOfParticles,numberOfSteps,alphas,4,6)
-        x_list.append(x)
-        y_list.append(y)
-        error_list.append(errors)
-        legend_list.append("#Particles = " + str(NrParticles))
-    
-    data.createFig(x_list,y_list,error_list, Hamiltonian+" "+wf, "alpha", "Mean Energy", legend_list, errorbars = True, )
-    
-    return 0
+def plot_Parameter_sweep():
+    # Data importing and conditioning
 
-def plot_PnrNormalizedEnergy_v_alpha_for_DifferentNrParticles(numberOfDimensions, numberOfParticles_list, alphas):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    exponent = 20
-    numberOfSteps       = 2**exponent
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    x_list = []
-    y_list = []
-    error_list = []
-    legend_list = []
+    fileInfo = analysis.GetParameterSweepFileNames_and_params()
+    for info in fileInfo:
+        filename = info[0]
+        data_array = analysis.csvToArray(filename)
 
-    for numberOfParticles in numberOfParticles_list:
-        x,y,errors, NrParticles, NrDims, NrSteps, wf,Hamiltonian, elapsedTime = data.RunVMC_w_blocking(numberOfDimensions,numberOfParticles,numberOfSteps,alphas,4,6)
-        x_list.append(x)
-        y_list.append(y/NrParticles)
-        error_list.append(errors/NrParticles)
-        legend_list.append("#Particles = " + str(NrParticles))
-    
-    data.createFig(x_list,y_list,error_list,"{}_{}_D{}_P{}_2pow{}_ImpSamp".format(Hamiltonian, wf,numberOfDimensions,numberOfParticles_list,exponent), r"$\alpha$", r"$\frac{\langle E\rangle}{N}$", legend_list, errorbars = True)
-    
-    return 0
+        energies = data_array
+        learningSteps = np.arange(len(data_array))
 
-def task_b_plot_analytical(numberOfDimensions, numberOfParticles_list, alphas):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    exponent = 22
-    numberOfSteps       = 2**exponent
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    x_list = []
-    y_list = []
-    error_list = []
-    legend_list = []
-    elapsed_time_list = []
+        #Blocking analysis for errorbars
+        exp_vals, std_devs = analysis.runBlocking(energies)
+        #Plotting
+        analysis.createPlot(learningSteps,exp_vals,std_devs,filename,"Learning Step", r"$\left\langle E \right\rangle$" )
 
-    for numberOfParticles in numberOfParticles_list:
-        x,y,errors, NrParticles, NrDims, NrSteps, wf,Hamiltonian, elapsedTime = data.RunVMC_w_blocking(numberOfDimensions,numberOfParticles,numberOfSteps,alphas,4,6)
-        x_list.append(x)
-        y_list.append(y/NrParticles)
-        error_list.append(errors/NrParticles)
-        legend_list.append("#P = {} ({:.2f} ms)".format(NrParticles,elapsedTime))
-    data.createFig(x_list,y_list,error_list, "{}_{}_D{}_P{}_2pow{}_analytic".format(Hamiltonian, wf,numberOfDimensions,numberOfParticles_list,exponent), r"$\alpha$", r"$\frac{\langle E\rangle}{N}$", legend_list, errorbars = True)
-    
-    return 0
+def plot_seaborn(filename_expVal,filename_StdDev):
+    df = pd.read_csv("Output\{}.csv".format(filename_expVal), usecols = ['h','0.01','0.013103','0.016207','0.01931','0.022414','0.028621','0.031724','0.037931','0.041034','0.047241','0.050345','0.056552','0.059655','0.065862'],index_col ='h')
+    mask = df < 0
 
-def task_b_plot_numerical(numberOfDimensions, numberOfParticles_list, alphas):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    exponent = 22
-    numberOfSteps       = 2**exponent
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    x_list = []
-    y_list = []
-    error_list = []
-    legend_list = []
-    elapsed_time_list = []
+    sns.heatmap(df,vmax = 3.5,vmin = 2.4,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    figPath = ".\\Results\\{}.pdf".format(filename_expVal)
+    plt.savefig(figPath)
+    plt.close()
+    df = pd.read_csv("Output\{}.csv".format(filename_StdDev), usecols = ['h','0.01','0.013103','0.016207','0.01931','0.022414','0.028621','0.031724','0.037931','0.041034','0.047241','0.050345','0.056552','0.059655','0.065862'],index_col ='h')
+    mask = df == 0
 
-    for numberOfParticles in numberOfParticles_list:
-        x,y,errors, NrParticles, NrDims, NrSteps, wf,Hamiltonian, elapsedTime = data.RunVMC_w_blocking(numberOfDimensions,numberOfParticles,numberOfSteps,alphas,4,6)
-        x_list.append(x)
-        y_list.append(y/NrParticles)
-        error_list.append(errors/NrParticles)
-        legend_list.append("#P = {} ({:.2f} ms)".format(NrParticles,elapsedTime))
-    data.createFig(x_list,y_list,error_list, "{}_{}_D{}_P{}_2pow{}_numerical".format(Hamiltonian, wf,numberOfDimensions,numberOfParticles_list,exponent), r"$\alpha$", r"$\frac{\langle E\rangle}{N}$", legend_list, errorbars = True)
-    
-    return 0
+    sns.heatmap(df,vmax = 1.0,vmin = 0.0,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    figPath = ".\\Results\\{}.pdf".format(filename_StdDev)
+    plt.savefig(figPath,bbox_inches="tight")
 
-def task_c_plot(numberOfDimensions, numberOfParticles_list, alphas, timeStep):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    exponent = 22
-    numberOfSteps       = 2**exponent
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    x_list = []
-    y_list = []
-    error_list = []
-    legend_list = []
-    elapsed_time_list = []
-    timeStep_list = []
-
-    for numberOfParticles in numberOfParticles_list:
-        x,y,errors, NrParticles, NrDims, NrSteps, wf,Hamiltonian, elapsedTime = data.RunVMC_w_blocking(numberOfDimensions,numberOfParticles,numberOfSteps,alphas,4,6)
-        x_list.append(x)
-        y_list.append(y/NrParticles)
-        error_list.append(errors/NrParticles)
-        legend_list.append("#P = {} ({:.2f} ms)".format(NrParticles,elapsedTime))
-    data.createFig(x_list,y_list,error_list, "{}_{}_D{}_P{}_2pow{}_task_C_1".format(Hamiltonian, wf,numberOfDimensions,numberOfParticles_list,exponent), r"$\alpha$", r"$\frac{\langle E\rangle}{N}$", legend_list, errorbars = True)
-    
-    return 0
-
-def task_c_plot_timeStep(numberOfDimensions, numberOfParticles_list, alpha, timeSteps):
-    #numberOfDimensions  = 1
-    #numberOfParticles_list  = [1,2,3,4,5]
-    exponent = 18
-    numberOfSteps       = 2**exponent
-    omega				= 1
-    #alphas				= np.linspace(0.2,0.8,4)
-    stepLength			= 0.1
-    y_list = []
-    timeSteps_list = []
-    legend_list = []
-    elapsed_time_list = []
-
-    for numberOfParticles in numberOfParticles_list:
-        y,NrParticles, NrDims,Nrsteps, wf, Hamiltonian  = data.RunVMC_w_blocking_varyTimestep_constantAlpha(numberOfDimensions,numberOfParticles,numberOfSteps,alpha,timeSteps)
-        y_list.append(y)
-        timeSteps_list.append(timeSteps)
-        legend_list.append("#P = {}".format(numberOfParticles))
-    data.createFig(timeSteps_list,y_list, [] ,"{}_{}_D{}_P{}_2pow{}_task_C_2".format(Hamiltonian, wf,numberOfDimensions,numberOfParticles_list,exponent), "timestep","accepted Proportion" , legend_list)
-    
-    return 0
-
-def Plot_2D_particlePositions():
-    NrParticles = 150
-    NrSteps = 2**20
-    alpha = 0.5
-    NrSamplingLengths = 5
-    SamplingRadius = 2
-    data.clearOutputDirectory()
-
-    hardCoreDiameter = 0
-    FileOptString = "HC_diameter_zero"
-    data.execute([NrParticles, NrSteps, alpha, hardCoreDiameter, NrSamplingLengths, SamplingRadius, FileOptString])
-    
-    hardCoreDiameter = 0.00433
-    FileOptString = "HC_diameter_regular"
-    data.execute([NrParticles, NrSteps, alpha, hardCoreDiameter, NrSamplingLengths, SamplingRadius, FileOptString])
-
-    #hardCoreDiameter = 0.433
-    #FileOptString = "HC_diameter_bigger"
-    #data.execute([NrParticles, NrSteps, alpha, hardCoreDiameter, NrSamplingLengths, SamplingRadius, FileOptString])
-    
-    NoJastrow_matrix = data.getMatrixFromFile(".\\Output\\CorrelatedGaussian_EllipticOscillator_HC_diameter_zero_Matrix.csv")
-    Jastrow_matrix = data.getMatrixFromFile(".\\Output\\CorrelatedGaussian_EllipticOscillator_HC_diameter_regular_Matrix.csv")
-    #BigJastrow_matrix = data.getMatrixFromFile(".\\Output\\CorrelatedGaussian_EllipticOscillator_HC_diameter_bigger_Matrix.csv")
-    
-    data.createMatrixPlot(NoJastrow_matrix)
-    data.createMatrixPlot(Jastrow_matrix)
-    #data.createMatrixPlot(BigJastrow_matrix)
-    data.createMatrixPlot(Jastrow_matrix-NoJastrow_matrix)
+def plot_DataFrame():
+    exp_val, std_dev = analysis.process_seaborn_plot_data()
+    mask = exp_val < 0
+    sns.heatmap(exp_val,vmax = 3.28,vmin = 3.23,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    figPath = ".\\Results\\{}.pdf".format("exp_val")
+    plt.savefig(figPath)
+    plt.close()
+    mask = std_dev == 0
+    sns.heatmap(std_dev,vmax = 0.01,vmin = 0.002,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    figPath = ".\\Results\\{}.pdf".format("std_dev")
+    plt.savefig(figPath,bbox_inches="tight")
 
 
-#plot_PnrNormalizedEnergy_v_alpha_for_DifferentNrParticles(3, [5], np.linspace(0.5,0.7,1))
-#plot_PnrNormalizedEnergy_v_alpha_for_DifferentNrParticles(2, [1,10,100,500], np.linspace(0.3,0.8,9))
-#plot_PnrNormalizedEnergy_v_alpha_for_DifferentNrParticles(3, [1,10,100,500], np.linspace(0.3,0.8,9))
-#task_c_plot_timeStep(3, [2], 0.5, [0.1,0.1])
-#task_c_plot(3, [1,10,100,500], np.linspace(0.3,0.8,10), 0.01)
+def Plot_2D_particlePositions(filename):
+    matrix = analysis.getMatrixFromFile(".\\Output\\{}.csv".format(filename))
+    plt.style.use("ggplot")
 
-#Plot_2D_particlePositions()
+    sns.heatmap(matrix,vmax = 50,vmin = 0)
+    figPath = ".\\Results\\{}.pdf".format(filename)
+    plt.savefig(figPath,bbox_inches="tight")
+    plt.close()
 
+
+#Plot_2D_particlePositions("D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_1_NH_2_I_0")
+#Plot_2D_particlePositions("D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_1_NH_2_I_0")
+#Plot_2D_particlePositions("D2_P_2I_N_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0")
+#Plot_2D_particlePositions("D2_P_2I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0")
+#Plot_2D_particlePositions("D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1")
+#Plot_2D_particlePositions("D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1")
+#plot_Energy_v_LearningStep("D2_P_2I_Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.050000_NH_2")
+plot_DataFrame()
 
