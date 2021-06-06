@@ -31,3 +31,23 @@ double HarmonicOscillator::computeLocalEnergy(WaveFunction* wavefunction) {
     return output;
 }
 
+double HarmonicOscillator::computeKE(WaveFunction* wavefunction) {
+    return wavefunction->computeDoubleDerivative();
+}
+
+double HarmonicOscillator::computePE(WaveFunction* wavefunction) {
+    std::vector<double> x = wavefunction->getX();
+    int NrVisibleNodes = wavefunction->getNrVisibleNodes();
+    double output = 0;
+
+    for (int i = 0; i < NrVisibleNodes; i++) {
+        output += pow(x[i], 2);
+    }
+    output *= 0.5 * m_omegaSquared;
+
+    return output;
+}
+
+double HarmonicOscillator::computeIE(WaveFunction* wavefunction) {
+    return 0;
+}

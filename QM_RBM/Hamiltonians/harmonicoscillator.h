@@ -8,7 +8,9 @@ public:
     HarmonicOscillator(System* system, double omega);
     double computeLocalEnergy(WaveFunction* wavefunction) override;
     std::string getName() override { return m_name; };
-
+    double computeKE(WaveFunction* wavefunction) override;
+    double computePE(WaveFunction* wavefunction) override;
+    double computeIE(WaveFunction* wavefunction) override;
 
 private:
     double m_omega = 0;

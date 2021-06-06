@@ -28,6 +28,31 @@ def plot_Energy_v_LearningStep(filename):
     #Plotting
     analysis.createPlot(learningSteps,exp_vals,std_devs,filename,"Learning Step", r"$\left\langle E \right\rangle$" )
 
+def GetBlockingResults(filename):
+    # Data importing and conditioning
+    data_array = analysis.csvToArray(filename)
+    energies = data_array
+    #Blocking analysis for errorbars
+    exp_vals, std_devs = analysis.runBlocking(energies)
+    return exp_vals, std_devs
+
+def plot_Radial_Distribution(filename):
+    data_array = analysis.csvToArray(filename)
+    NrSampled = data_array[0]
+    boxes= np.arange(len(NrSampled))
+    plt.style.use("ggplot")
+    plt.figure()
+    plt.xlim(0,80)
+    plt.scatter(boxes,NrSampled/(sum(NrSampled)),label = "doublet")
+    
+    plt.ylabel("Normalized Distribution")
+    plt.xlabel(r"$1/600(a_0)$")
+    
+    plt.legend()
+    figPath = ".\\Results\\{}.pdf".format(filename)
+    plt.savefig(figPath)
+    plt.close()
+
 def plot_Parameter_sweep():
     # Data importing and conditioning
 
@@ -62,12 +87,12 @@ def plot_seaborn(filename_expVal,filename_StdDev):
 def plot_DataFrame():
     exp_val, std_dev = analysis.process_seaborn_plot_data()
     mask = exp_val < 0
-    sns.heatmap(exp_val,vmax = 3.28,vmin = 3.23,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    sns.heatmap(exp_val,vmax = 2.00001,vmin = 1.99992,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
     figPath = ".\\Results\\{}.pdf".format("exp_val")
     plt.savefig(figPath)
     plt.close()
     mask = std_dev == 0
-    sns.heatmap(std_dev,vmax = 0.01,vmin = 0.002,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
+    sns.heatmap(std_dev,vmax = 0.0001,vmin = 0.0000,annot = True,mask = mask,fmt = '.2f', square = True,annot_kws={"fontsize":8})
     figPath = ".\\Results\\{}.pdf".format("std_dev")
     plt.savefig(figPath,bbox_inches="tight")
 
@@ -76,18 +101,16 @@ def Plot_2D_particlePositions(filename):
     matrix = analysis.getMatrixFromFile(".\\Output\\{}.csv".format(filename))
     plt.style.use("ggplot")
 
-    sns.heatmap(matrix,vmax = 50,vmin = 0)
+    sns.heatmap(matrix,vmax = 450,vmin = 10)
     figPath = ".\\Results\\{}.pdf".format(filename)
     plt.savefig(figPath,bbox_inches="tight")
     plt.close()
 
+def plot_Selected_Runs():
+    plot_Radial_Distribution("Particle_Radii")
+    Plot_2D_particlePositions("D2_P_2I_Y_Importance_S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000_NH_3")
+    plot_Energy_v_LearningStep("D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000_NH_3_Adaptive_1")
 
-#Plot_2D_particlePositions("D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_1_NH_2_I_0")
-#Plot_2D_particlePositions("D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_1_NH_2_I_0")
-#Plot_2D_particlePositions("D2_P_2I_N_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0")
-#Plot_2D_particlePositions("D2_P_2I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0")
-#Plot_2D_particlePositions("D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1")
-#Plot_2D_particlePositions("D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1")
-#plot_Energy_v_LearningStep("D2_P_2I_Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.050000_NH_2")
-plot_DataFrame()
+
+plot_Selected_Runs()
 

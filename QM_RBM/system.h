@@ -14,7 +14,7 @@ public:
 
     void runMetropolisSteps         (int numberOfMetropolisSteps, double stepLength);
     void runMALASteps               (int numberOfMetropolisSteps, double timeStep);
-    void runOptimizationSteps       (int numberOfMetropolisSteps, int numberOfOptimizationSteps, double timestep, double learningRate, std::vector<std::pair<std::string, std::vector<double>>> &datastruct, bool importanceSampling, bool OnlyLastEnergies);
+    void runOptimizationSteps       (int numberOfMetropolisSteps, int numberOfOptimizationSteps, double timestep, double learningRate, std::vector<std::pair<std::string, std::vector<double>>>& datastruct, bool importanceSampling, bool OnlyLastEnergies);
     
     void setNumberOfParticles       (int numberOfParticles);
     void setNumberOfDimensions      (int numberOfDimensions);
@@ -46,12 +46,12 @@ private:
     int                             m_numberOfMetropolisSteps = 0;
     double                          m_equilibrationFraction = 0.0;
     double                          m_stepLength = 0.1;
-    double                          m_timeStep = 0;
-    double                          m_timeStepSqrt = 0;
+    double                          m_timeStep = 0.0;
+    double                          m_timeStepSqrt = 0.0;
     double                          m_rootTimeStep = sqrt(m_stepLength);
     double                          m_driftCoefficient = 0.5;
-    double                          m_elapsed = 0;
-    double                          m_LearningRate = 0;
+    double                          m_elapsed = 0.0;
+    double                          m_LearningRate = 0.0;
     class WaveFunction*             m_waveFunction = nullptr;
     class Hamiltonian*              m_hamiltonian = nullptr;
     class InitialState*             m_initialState = nullptr;

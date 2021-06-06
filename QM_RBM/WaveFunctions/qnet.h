@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include "wavefunction.h"
+#include "Optimizer/Optimizer.h"
+#include "Optimizer/Adam.h"
 
 class qnet : public WaveFunction {
 public:
@@ -15,8 +17,13 @@ public:
     std::string getName() { return m_name; };
     void adjustPosition(int node, double dx) override;
     void setPosition(int node, double x) override;
+    void initializePositions() override;
     void OptimizeParameters(std::vector<double>& ParameterGradientVector) override;
+    void setOptimizer(class Optimizer* optimizer) override;
+    void setParameters(std::vector<double>& ParameterVector) override;
+    std::vector<double> getParameters() override;
 
 private:
     std::string m_name = "QRBM";
+    Optimizer *m_optimizer = nullptr;
 };

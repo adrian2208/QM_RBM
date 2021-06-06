@@ -68,7 +68,44 @@ public:
 		}
 		OutFile.close();
 	}
+void WriteToCSV(std::vector<std::pair<std::string, std::vector<int>>>& dataStruct) {
+	std::ofstream OutFile;
+	OutFile.open(m_path, std::fstream::trunc);
 
+	//adds the comment to the top of the csv file
+	OutFile << m_comment << "\n";
+
+	int largestColumnSize = 0;
+	std::vector<int> columnsizes(dataStruct.size());
+	// adds the header to the csv file and finds the length of the longest column
+	for (int i = 0; i < dataStruct.size(); i++) {
+		OutFile << dataStruct.at(i).first;
+		if (i != dataStruct.size() - 1) {
+			OutFile << ",";
+		}
+		columnsizes[i] = dataStruct.at(i).second.size();
+		if (columnsizes[i] > largestColumnSize) {
+			largestColumnSize = columnsizes[i];
+		}
+	}
+	OutFile << "\n";
+
+	// add the data structure to the csv file 
+	double item;
+	for (int i = 0; i < largestColumnSize; i++) {
+		for (int j = 0; j < dataStruct.size(); j++) {
+			if (i < columnsizes[j]) {
+				item = dataStruct.at(j).second.at(i);
+				OutFile << item;
+			}
+			if (j != dataStruct.size() - 1) {
+				OutFile << ",";
+			}
+		}
+		OutFile << "\n";
+	}
+	OutFile.close();
+}
 
 
 private:

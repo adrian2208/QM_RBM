@@ -1,13 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Hamiltonians",
-    "\\Math",
-    "\\Output",
-    "\\Results",
-    "\\Selected_Runs",
-    "\\WaveFunctions"
+    "\\Results\\Report_Results"
   ],
-  "SelectedNode": "\\Output",
+  "SelectedNode": "\\DataHandler.py",
   "PreviewInSolutionExplorer": false
 }

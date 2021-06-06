@@ -4,17 +4,31 @@
 \BOOKMARK [2][-]{subsection.3.1}{The wave function}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{The Hamiltonian}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{The Local energy }{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Optimization}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{Implementation}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Post Analysis and Error Estimation}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Parallelization}{section.4}% 10
-\BOOKMARK [1][-]{section.5}{Results}{}% 11
-\BOOKMARK [2][-]{subsection.5.1}{Non- interacting electrons}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.2}{Interacting electrons}{section.5}% 13
-\BOOKMARK [2][-]{subsection.5.3}{Electron Locations}{section.5}% 14
-\BOOKMARK [3][-]{subsubsection.5.3.1}{Metropolis Sampling}{subsection.5.3}% 15
-\BOOKMARK [3][-]{subsubsection.5.3.2}{Importance Sampling}{subsection.5.3}% 16
-\BOOKMARK [2][-]{subsection.5.4}{Numerical instability}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{Conclusion}{}% 18
-\BOOKMARK [1][-]{section.7}{Appendix A}{}% 19
-\BOOKMARK [1][-]{section.8}{Appendix B}{}% 20
+\BOOKMARK [2][-]{subsection.3.4}{Analytic energies}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Non- interacting}{subsection.3.4}% 8
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Interacting}{subsection.3.4}% 9
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{The Wave function}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Optimization}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Cost function gradient}{subsection.4.2}% 13
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Stochastic Gradient Descent \(SGD\)}{subsection.4.2}% 14
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Adaptive Momentum estimation \(ADAM\)}{subsection.4.2}% 15
+\BOOKMARK [2][-]{subsection.4.3}{The Metropolis Algorithm}{section.4}% 16
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Metropolis- Hastings}{subsection.4.3}% 17
+\BOOKMARK [2][-]{subsection.4.4}{Initialization}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.5}{Post Analysis and Error Estimation}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.6}{Parallelization}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{Results}{}% 21
+\BOOKMARK [2][-]{subsection.5.1}{Brute force v. Importance sampling}{section.5}% 22
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Adam v. SGD}{subsection.5.1}% 23
+\BOOKMARK [2][-]{subsection.5.2}{Non- interacting electrons}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.3}{Interacting electrons}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.4}{Electron Locations}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{Loss of significance}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Divide by zero}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.3}{The nature of an upper bound}{section.6}% 30
+\BOOKMARK [2][-]{subsection.6.4}{Bug}{section.6}% 31
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 32
+\BOOKMARK [1][-]{section.8}{Appendix A}{}% 33
+\BOOKMARK [1][-]{section.9}{Appendix B}{}% 34

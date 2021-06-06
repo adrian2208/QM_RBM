@@ -42,6 +42,7 @@ include_directories(
     Hamiltonians
     Math
     WaveFunctions
+    Optimizer
 )
 
 
@@ -55,4 +56,4 @@ file(
 
 
 # Create executable called "vmc"
-add_executable(QM_RBM ${SOURCES} "Benchmark.h"  "Hamiltonians/InteractingOscillator.h" "Hamiltonians/InteractingOscillator.cpp" "csvHandler.h")
+add_executable(QM_RBM ${SOURCES} "Benchmark.h"  "Hamiltonians/InteractingOscillator.h" "Hamiltonians/InteractingOscillator.cpp" "csvHandler.h" "Optimizer/Optimizer.h" "Optimizer/Optimizer.cpp" "Optimizer/Sgd.h" "Optimizer/Sgd.cpp" "Optimizer/Adam.h" "Optimizer/Adam.cpp")

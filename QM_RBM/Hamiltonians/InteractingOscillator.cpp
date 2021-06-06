@@ -10,7 +10,7 @@ using std::endl;
 
 InteractingOscillator::InteractingOscillator(System* system, double omega, int NrParticles) :
     Hamiltonian(system) {
-    assert(omega > 0 && NrParticles == 2);
+    assert(omega > 0.0 && NrParticles == 2);
     m_omega = omega;
     m_omegaSquared = omega * omega;
 }
@@ -20,40 +20,76 @@ double InteractingOscillator::computeLocalEnergy(WaveFunction* wavefunction) {
     int NrParticles = wavefunction->getNrParticles();
     int NrDimensions = wavefunction->getNrDimensions();
     int NrVisibleNodes = wavefunction->getNrVisibleNodes();
-    double output = 0;
-    double KE = 0;
-    double ParticleDistance = 0;
+    double output = 0.0;
+    double KE = 0.0;
+    double ParticleDistance = 0.0;
     int index;
 
     for (int i = 0; i < NrVisibleNodes; i++) {
         output += pow(x[i], 2);
     }
-    output *= 0.5 * m_omegaSquared;
-    //std::cout << "PE:" << std::to_string(output);
+    output *= 0.5* m_omegaSquared;
+
     KE = wavefunction->computeDoubleDerivative();
-    //std::cout << "    KE:" << std::to_string(KE);
+
     output += KE;
     
 
-    //for (int i = 0; i < NrDimensions; i++) {
-    //    index = i + NrDimensions;
-    //    ParticleDistance += pow(x[i] - x[index], 2);
-    //}
-    
-    //ParticleDistance = sqrt(pow(x[0], 2) + pow(x[1], 2)) - sqrt(pow(x[2], 2) + pow(x[3], 2));
-    double interactionTerm = 0;
-    double rad;
+
+    double interactionTerm = 0.0;
+    double rad = 0.0;
+    int idx1, idx2;
     for (int p = 0; p < NrVisibleNodes - NrDimensions; p += NrDimensions) {
         for (int s = (p + NrDimensions); s < NrVisibleNodes; s += NrDimensions) {
-            rad = 0;
             for (int i = 0; i < NrDimensions; i++) {
-                rad += pow(x[p + i] - x[s + i],2);
+                idx1 = p + i;
+                idx2 = s + i;
+                rad += pow(x[idx1] - x[idx2],2.0);
             }
             interactionTerm += 1.0 / sqrt(rad);
+            rad = 0.0;
         }
     }
-    //std::cout << "    Int:" << std::to_string(interactionTerm) << "\n";
-    //introducing a small offset to improve numerical stability
-    output += interactionTerm;//1.0 / (abs(ParticleDistance)+1.0e-8);
+
+    output += interactionTerm;
     return output;
+}
+
+double InteractingOscillator::computeKE(WaveFunction* wavefunction) {
+    return wavefunction->computeDoubleDerivative();
+}
+
+double InteractingOscillator::computePE(WaveFunction* wavefunction) {
+    std::vector<double> x = wavefunction->getX();
+    int NrVisibleNodes = wavefunction->getNrVisibleNodes();
+    double output = 0.0;
+
+    for (int i = 0; i < NrVisibleNodes; i++) {
+        output += pow(x[i], 2.0);
+    }
+    output *= 0.5 * m_omegaSquared;
+
+    return output;
+}
+
+double InteractingOscillator::computeIE(WaveFunction* wavefunction) {
+    std::vector<double> x = wavefunction->getX();
+    int NrDimensions = wavefunction->getNrDimensions();
+    int NrVisibleNodes = wavefunction->getNrVisibleNodes();
+
+    double interactionTerm = 0.0;
+    double rad;
+    int idx1, idx2;
+    for (int p = 0; p < NrVisibleNodes - NrDimensions; p += NrDimensions) {
+        for (int s = (p + NrDimensions); s < NrVisibleNodes; s += NrDimensions) {
+            rad = 0.0;
+            for (int i = 0; i < NrDimensions; i++) {
+                idx1 = p + i;
+                idx2 = s + i;
+                rad += pow(x[idx1] - x[idx2], 2.0);
+            }
+            interactionTerm += 1.0 / (sqrt(rad)+1.0e-10);
+        }
+    }
+    return interactionTerm;
 }

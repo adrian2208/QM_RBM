@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.26)  30 MAY 2021 03:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.9.26)  7 JUN 2021 00:55
 entering extended mode
 **./main.tex
 (main.tex
@@ -781,25 +781,10 @@ LaTeX Warning: Label `J2' multiply defined.
 LaTeX Warning: Label `sub@J2' multiply defined.
 
 
-LaTeX Warning: Label `fig:interacting_sweep' multiply defined.
-
-
-LaTeX Warning: Label `J1' multiply defined.
-
-
-LaTeX Warning: Label `sub@J1' multiply defined.
-
-
 LaTeX Warning: Label `J2' multiply defined.
 
 
 LaTeX Warning: Label `sub@J2' multiply defined.
-
-
-LaTeX Warning: Label `J1' multiply defined.
-
-
-LaTeX Warning: Label `sub@J1' multiply defined.
 
 )
 \openout1 = `main.aux'.
@@ -908,7 +893,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout6 = `main.toc'.
 
 
-(main.lof)
+(main.lofpdfTeX warning (ext4): destination with the same identifier (name{page
+.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8 ...electron positions}}{15}{figure.caption.12}
+                                                  % [1])
 \tf@lof=\write7
 \openout7 = `main.lof'.
 
@@ -916,221 +906,346 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@lot=\write8
 \openout8 = `main.lot'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.51 \clearpage
-                [1] [2
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
-]
-<../Results/Report_Results/exp_val_non_interacting.pdf, id=165, 462.52798pt x 3
-46.89601pt>
-File: ../Results/Report_Results/exp_val_non_interacting.pdf Graphic file (type 
-pdf)
-<use ../Results/Report_Results/exp_val_non_interacting.pdf>
-Package pdftex.def Info: ../Results/Report_Results/exp_val_non_interacting.pdf 
- used on input line 116.
-(pdftex.def)             Requested size: 209.23181pt x 177.41022pt.
-<../Results/Report_Results/std_dev_non_interacting.pdf, id=166, 342.98625pt x 3
-08.93178pt>
-File: ../Results/Report_Results/std_dev_non_interacting.pdf Graphic file (type 
-pdf)
-<use ../Results/Report_Results/std_dev_non_interacting.pdf>
-Package pdftex.def Info: ../Results/Report_Results/std_dev_non_interacting.pdf 
- used on input line 120.
-(pdftex.def)             Requested size: 205.79333pt x 180.23892pt.
- [3]
-<../Results/Report_Results/exp_val.pdf, id=181, 462.52798pt x 346.89601pt>
+ []
+
+[3
+
+] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+[5] [6]
+<../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.200000
+_NH_6_Adaptive_1_Importance.pdf, id=293, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.2
+00000_NH_6_Adaptive_1_Importance.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.20
+0000_NH_6_Adaptive_1_Importance.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow
+20_GD_ls_v_E_LR_0.200000_NH_6_Adaptive_1_Importance.pdf  used on input line 197
+.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 197--198
+ [][] 
+ []
+
+<../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.200000
+_NH_6_Adaptive_1BruteForce.pdf, id=294, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.2
+00000_NH_6_Adaptive_1BruteForce.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.20
+0000_NH_6_Adaptive_1BruteForce.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow
+20_GD_ls_v_E_LR_0.200000_NH_6_Adaptive_1BruteForce.pdf  used on input line 203.
+
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 203--204
+ [][] 
+ []
+
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 195--207
+[][] [] 
+ []
+
+[7]
+<../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.010000
+_NH_3_Adaptive_1.pdf, id=304, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.0
+10000_NH_3_Adaptive_1.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.01
+0000_NH_3_Adaptive_1.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow
+21_GD_ls_v_E_LR_0.010000_NH_3_Adaptive_1.pdf  used on input line 219.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 219--220
+ [][] 
+ []
+
+<../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.010000
+_NH_3_Adaptive_0.pdf, id=305, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.0
+10000_NH_3_Adaptive_0.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.01
+0000_NH_3_Adaptive_0.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow
+21_GD_ls_v_E_LR_0.010000_NH_3_Adaptive_0.pdf  used on input line 225.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 225--226
+ [][] 
+ []
+
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 217--229
+[][] [] 
+ []
+
+<../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000
+_NH_3_Adaptive_1.pdf, id=306, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.1
+00000_NH_3_Adaptive_1.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.10
+0000_NH_3_Adaptive_1.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow
+21_GD_ls_v_E_LR_0.100000_NH_3_Adaptive_1.pdf  used on input line 236.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 236--237
+ [][] 
+ []
+
+<../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000
+_NH_3_Adaptive_0.pdf, id=307, 462.52798pt x 346.89601pt>
+File: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.1
+00000_NH_3_Adaptive_0.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.10
+0000_NH_3_Adaptive_0.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow
+21_GD_ls_v_E_LR_0.100000_NH_3_Adaptive_0.pdf  used on input line 242.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 242--243
+ [][] 
+ []
+
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 234--246
+[][] [] 
+ []
+
+[8 <../Results/Report_Results/D2_P_2I_Y__S_2pow20_eqS_2pow20_GD_ls_v_E_LR_0.200
+000_NH_6_Adaptive_1_Importance.pdf> <../Results/Report_Results/D2_P_2I_Y__S_2po
+w20_eqS_2pow20_GD_ls_v_E_LR_0.200000_NH_6_Adaptive_1BruteForce.pdf
+
+pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y__S_2pow20_eq
+S_2pow20_GD_ls_v_E_LR_0.200000_NH_6_Adaptive_1BruteForce.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+> <../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.0100
+00_NH_3_Adaptive_1.pdf
+
+pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eq
+S_2pow21_GD_ls_v_E_LR_0.010000_NH_3_Adaptive_1.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+> <../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.0100
+00_NH_3_Adaptive_0.pdf
+
+pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eq
+S_2pow21_GD_ls_v_E_LR_0.010000_NH_3_Adaptive_0.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>]
+<../Results/Report_Results/exp_val.pdf, id=457, 462.52798pt x 346.89601pt>
 File: ../Results/Report_Results/exp_val.pdf Graphic file (type pdf)
 <use ../Results/Report_Results/exp_val.pdf>
 Package pdftex.def Info: ../Results/Report_Results/exp_val.pdf  used on input l
-ine 129.
+ine 257.
 (pdftex.def)             Requested size: 209.23181pt x 177.41022pt.
-<../Results/Report_Results/std_dev.pdf, id=182, 365.33537pt x 302.10942pt>
+<../Results/Report_Results/std_dev.pdf, id=458, 397.75925pt x 291.27206pt>
 File: ../Results/Report_Results/std_dev.pdf Graphic file (type pdf)
 <use ../Results/Report_Results/std_dev.pdf>
 Package pdftex.def Info: ../Results/Report_Results/std_dev.pdf  used on input l
-ine 133.
-(pdftex.def)             Requested size: 219.20291pt x 176.14548pt.
-<../Results/Report_Results/D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_1_NH_2_I_0.pdf, id=183, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_1_NH_2_I_0.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_1_NH_2_I_0.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_1I_N_Metropolis_S_2pow1
-9_eqS_2pow18_Position_sampling_P_1_NH_2_I_0.pdf  used on input line 146.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+ine 261.
+(pdftex.def)             Requested size: 238.65738pt x 169.643pt.
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 146--147
- [][] 
+Overfull \hbox (12.17343pt too wide) in paragraph at lines 261--262
+[][] 
  []
 
-<../Results/Report_Results/D2_P_2I_N_Metropolis_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_2_NH_2_I_0.pdf, id=184, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_2I_N_Metropolis_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_2_NH_2_I_0.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_2I_N_Metropolis_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_2_NH_2_I_0.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_N_Metropolis_S_2pow1
-9_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf  used on input line 152.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+[9 <../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100
+000_NH_3_Adaptive_1.pdf> <../Results/Report_Results/D2_P_2I_Y__S_2pow21_eqS_2po
+w21_GD_ls_v_E_LR_0.100000_NH_3_Adaptive_0.pdf
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 152--153
- [][] 
+pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y__S_2pow21_eq
+S_2pow21_GD_ls_v_E_LR_0.100000_NH_3_Adaptive_0.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 267--280
+
  []
 
-<../Results/Report_Results/D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_2_NH_2_I_1.pdf, id=185, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_2_NH_2_I_1.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_2_NH_2_I_1.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y_Metropolis_S_2pow1
-9_eqS_2pow18_Position_sampling_P_2_NH_2_I_1.pdf  used on input line 158.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+<../Results/Report_Results/exp_valInteracting.pdf, id=538, 462.52798pt x 346.89
+601pt>
+File: ../Results/Report_Results/exp_valInteracting.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/exp_valInteracting.pdf>
+Package pdftex.def Info: ../Results/Report_Results/exp_valInteracting.pdf  used
+ on input line 289.
+(pdftex.def)             Requested size: 209.23181pt x 177.41022pt.
+<../Results/Report_Results/std_devInteracting.pdf, id=539, 391.37602pt x 291.27
+206pt>
+File: ../Results/Report_Results/std_devInteracting.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/std_devInteracting.pdf>
+Package pdftex.def Info: ../Results/Report_Results/std_devInteracting.pdf  used
+ on input line 293.
+(pdftex.def)             Requested size: 234.82741pt x 169.643pt.
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 158--159
- [][] 
+Overfull \hbox (8.34346pt too wide) in paragraph at lines 293--294
+[][] 
  []
 
-
-Overfull \hbox (2.43333pt too wide) in paragraph at lines 144--162
-[][] []
- []
-
-[4 <../Results/Report_Results/exp_val_non_interacting.pdf> <../Results/Report_R
-esults/std_dev_non_interacting.pdf
-
-pdfTeX warning: pdflatex (file ../Results/Report_Results/std_dev_non_interactin
-g.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <../Results/Report_Results/exp_val.pdf
-
-pdfTeX warning: pdflatex (file ../Results/Report_Results/exp_val.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <../Results/Report_Results/std_dev.pdf
+[10 <../Results/Report_Results/exp_val.pdf> <../Results/Report_Results/std_dev.
+pdf
 
 pdfTeX warning: pdflatex (file ../Results/Report_Results/std_dev.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >]
-<../Results/Report_Results/D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_1_NH_2_I_0.pdf, id=266, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_1_NH_2_I_0.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_1_NH_2_I_0.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow1
-9_eqS_2pow18_Position_sampling_P_1_NH_2_I_0.pdf  used on input line 171.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+<../Results/Report_Results/Radial_distribution_One_v_Two.pdf, id=586, 462.52798
+pt x 346.89601pt>
+File: ../Results/Report_Results/Radial_distribution_One_v_Two.pdf Graphic file 
+(type pdf)
+<use ../Results/Report_Results/Radial_distribution_One_v_Two.pdf>
+Package pdftex.def Info: ../Results/Report_Results/Radial_distribution_One_v_Tw
+o.pdf  used on input line 305.
+(pdftex.def)             Requested size: 277.51892pt x 203.01764pt.
+ [11 <../Results/Report_Results/exp_valInteracting.pdf> <../Results/Report_Resu
+lts/std_devInteracting.pdf
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 171--172
+pdfTeX warning: pdflatex (file ../Results/Report_Results/std_devInteracting.pdf
+): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
+
+ []
+
+<../Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_Sa
+mplingSingle_E1.pdf, id=629, 384.85165pt x 311.55095pt>
+File: ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Positi
+on_SamplingSingle_E1.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Positio
+n_SamplingSingle_E1.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_1I_N_Importance_S_2pow2
+0_eqS_2pow20_Position_SamplingSingle_E1.pdf  used on input line 314.
+(pdftex.def)             Requested size: 230.91277pt x 186.932pt.
+
+Overfull \hbox (4.42882pt too wide) in paragraph at lines 314--315
  [][] 
  []
 
-<../Results/Report_Results/D2_P_2I_N_Importance_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_2_NH_2_I_0.pdf, id=267, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_2_NH_2_I_0.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_2_NH_2_I_0.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow1
-9_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf  used on input line 177.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+<../Results/Report_Results/D2_P_2I_N_Importance_S_2pow20_eqS_2pow20_Position_Sa
+mplingNON_interactingE1_9997.pdf, id=630, 384.85165pt x 311.55095pt>
+File: ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow20_eqS_2pow20_Positi
+on_SamplingNON_interactingE1_9997.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow20_eqS_2pow20_Positio
+n_SamplingNON_interactingE1_9997.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_N_Importance_S_2pow2
+0_eqS_2pow20_Position_SamplingNON_interactingE1_9997.pdf  used on input line 32
+0.
+(pdftex.def)             Requested size: 230.91277pt x 186.932pt.
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 177--178
+Overfull \hbox (4.42882pt too wide) in paragraph at lines 320--321
  [][] 
  []
 
-<../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_2_NH_2_I_1.pdf, id=268, 378.46843pt x 311.55095pt>
-File: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positi
-on_sampling_P_2_NH_2_I_1.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_2_NH_2_I_1.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow1
-9_eqS_2pow18_Position_sampling_P_2_NH_2_I_1.pdf  used on input line 183.
-(pdftex.def)             Requested size: 227.0828pt x 186.932pt.
+<../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow20_eqS_2pow20_Position_Sa
+mpling_InteractingE3_07.pdf, id=631, 384.85165pt x 311.55095pt>
+File: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow20_eqS_2pow20_Positi
+on_Sampling_InteractingE3_07.pdf Graphic file (type pdf)
+<use ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow20_eqS_2pow20_Positio
+n_Sampling_InteractingE3_07.pdf>
+Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow2
+0_eqS_2pow20_Position_Sampling_InteractingE3_07.pdf  used on input line 326.
+(pdftex.def)             Requested size: 230.91277pt x 186.932pt.
 
-Overfull \hbox (0.59885pt too wide) in paragraph at lines 183--184
+Overfull \hbox (4.42882pt too wide) in paragraph at lines 326--327
+ [][] 
+ []
+
+<../Results/Report_Results/Radial_distribution_interacting_v_Non.pdf, id=632, 4
+62.52798pt x 346.89601pt>
+File: ../Results/Report_Results/Radial_distribution_interacting_v_Non.pdf Graph
+ic file (type pdf)
+<use ../Results/Report_Results/Radial_distribution_interacting_v_Non.pdf>
+Package pdftex.def Info: ../Results/Report_Results/Radial_distribution_interact
+ing_v_Non.pdf  used on input line 332.
+(pdftex.def)             Requested size: 231.26341pt x 173.44757pt.
+
+Overfull \hbox (4.77946pt too wide) in paragraph at lines 332--333
  [][] 
  []
 
 
-Overfull \hbox (2.43333pt too wide) in paragraph at lines 169--187
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 312--336
 [][] []
  []
 
-[5 <../Results/Report_Results/D2_P_1I_N_Metropolis_S_2pow19_eqS_2pow18_Position
-_sampling_P_1_NH_2_I_0.pdf> <../Results/Report_Results/D2_P_2I_N_Metropolis_S_2
-pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf
 
-pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_N_Metropolis_S
-_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <../Results/Report_Results/D2_P_2I_Y_Metropolis_S_2pow19_eqS_2pow18_Position_
-sampling_P_2_NH_2_I_1.pdf
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 312--336
+[] [] 
+ []
 
-pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y_Metropolis_S
-_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
->] [6 <../Results/Report_Results/D2_P_1I_N_Importance_S_2pow19_eqS_2pow18_Posit
-ion_sampling_P_1_NH_2_I_0.pdf> <../Results/Report_Results/D2_P_2I_N_Importance_
-S_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf
+[12 <../Results/Report_Results/Radial_distribution_One_v_Two.pdf>] [13 <../Resu
+lts/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_SamplingSi
+ngle_E1.pdf> <../Results/Report_Results/D2_P_2I_N_Importance_S_2pow20_eqS_2pow2
+0_Position_SamplingNON_interactingE1_9997.pdf
 
 pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_N_Importance_S
-_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_0.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
-> <../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Position_
-sampling_P_2_NH_2_I_1.pdf
+_2pow20_eqS_2pow20_Position_SamplingNON_interactingE1_9997.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow20_eqS_2pow20_Position_
+Sampling_InteractingE3_07.pdf
 
 pdfTeX warning: pdflatex (file ../Results/Report_Results/D2_P_2I_Y_Importance_S
-_2pow19_eqS_2pow18_Position_sampling_P_2_NH_2_I_1.pdf): PDF inclusion: multiple
- pdfs with page group included in a single page
+_2pow20_eqS_2pow20_Position_Sampling_InteractingE3_07.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+> <../Results/Report_Results/Radial_distribution_interacting_v_Non.pdf
+
+pdfTeX warning: pdflatex (file ../Results/Report_Results/Radial_distribution_in
+teracting_v_Non.pdf): PDF inclusion: multiple pdfs with page group included in 
+a single page
 >]
 <../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Position_sa
-mpling_P_2_NH_2_I_1_Ene_ne1374.pdf, id=384, 381.66788pt x 311.55095pt>
+mpling_P_2_NH_2_I_1_Ene_ne1374.pdf, id=792, 381.66788pt x 311.55095pt>
 File: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positi
 on_sampling_P_2_NH_2_I_1_Ene_ne1374.pdf Graphic file (type pdf)
 <use ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positio
 n_sampling_P_2_NH_2_I_1_Ene_ne1374.pdf>
 Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow1
 9_eqS_2pow18_Position_sampling_P_2_NH_2_I_1_Ene_ne1374.pdf  used on input line 
-215.
+373.
 (pdftex.def)             Requested size: 229.00249pt x 181.81044pt.
-<../Results/Report_Results/D2_P_2I_Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.050000
-_NH_2.pdf, id=385, 462.52798pt x 346.89601pt>
-File: ../Results/Report_Results/D2_P_2I_Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.0
-50000_NH_2.pdf Graphic file (type pdf)
-<use ../Results/Report_Results/D2_P_2I_Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.05
-0000_NH_2.pdf>
-Package pdftex.def Info: ../Results/Report_Results/D2_P_2I_Y__S_2pow19_eqS_2pow
-18_GD_ls_v_E_LR_0.050000_NH_2.pdf  used on input line 227.
-(pdftex.def)             Requested size: 277.51892pt x 203.01764pt.
- [7 <../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positio
-n_sampling_P_2_NH_2_I_1_Ene_ne1374.pdf>] [8 <../Results/Report_Results/D2_P_2I_
-Y__S_2pow19_eqS_2pow18_GD_ls_v_E_LR_0.050000_NH_2.pdf>] (main.bbl) [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 
-(main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+[15 <../Results/Report_Results/D2_P_2I_Y_Importance_S_2pow19_eqS_2pow18_Positio
+n_sampling_P_2_NH_2_I_1_Ene_ne1374.pdf>] [16] (main.bbl) [17]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 441.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
+ (main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C4E10FEE4159E403799F4ADE0A2C3B94;1210.
+(rerunfilecheck)             Checksum: BC6A1C9B03C1C06EE031B292AB28558A;2220.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 22081 strings out of 481199
- 429360 string characters out of 2905595
- 684186 words of memory out of 3000000
- 37175 multiletter control sequences out of 15000+200000
- 550677 words of font info for 86 fonts, out of 3000000 for 9000
+ 22187 strings out of 481199
+ 432507 string characters out of 2905595
+ 687619 words of memory out of 3000000
+ 37239 multiletter control sequences out of 15000+200000
+ 551378 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,10n,61p,912b,776s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,12n,61p,2004b,776s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/p
@@ -1140,21 +1255,23 @@ TeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/adria/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/adria/AppD
 ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ad
 ria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
-Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmr17.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr8.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/adria/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/adria/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/adria/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/a
-dria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb>
-Output written on main.pdf (10 pages, 11292584 bytes).
+Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib1
+0.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr10.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmr12.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmr17.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/adria/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/adria/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/adria/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/adria/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/a
+dria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
+/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti1
+0.pfb><C:/Users/adria/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb>
+Output written on main.pdf (18 pages, 6817775 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 56 named destinations out of 1000 (max. 500000)
- 233 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 917 PDF objects out of 1000 (max. 8388607)
+ 93 named destinations out of 1000 (max. 500000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 
