@@ -22,5 +22,40 @@ class Random;// - generates all randomly distributed values
 ```
 The main scope is contained in QM_RBM.cpp. All files are output to the Ouput folder, then fetched and processed using 
 DataHandler.py with the library analysis.py.
+
+### The following files and folders can safely be ignored
+   - .vs
+   - __pycache__
+   - out/build
+   - CMakeSettings.json
 ## Usage
-See the Selected_Runs folder for an example.
+### See the Selected_Runs folder for an example.
+In QM_RBM.cpp the basic structure of a simulation looks like this
+```c++
+int main(int argc, char const* argv[]) {
+    //Setup
+    class System* system = new System();
+    system->setHamiltonian(new Hamiltonian());
+    
+    class Wavefunction* wavefunction = new Wavefunction();
+    wavefunction->setOptimizer(new Optimizer());
+    
+    system->setWaveFunction(wavefunction);
+    
+    system->setSampler(new Sampler());
+    system->setEquilibrationFraction();
+    //Initialize datastruct for storing data for blocking - It needs to have this form
+    std::vector<std::pair<std::string, std::vector<double>>> datastruct = std::vector<std::pair<std::string, std::vector<double>>>();
+    
+    //Run
+    system->runOptimizationSteps(datastruct); //for gradient descent optimization or
+    system->runMetropolisSteps(); //for brute force sampling or
+    system->runMALASteps() // for Importance Sampling
+    //Output handling
+    csvHandler outputFile(fileName,csvComment);
+    outputFile.WriteToCSV(datastruct);
+    
+    return 0;
+}
+```
+
