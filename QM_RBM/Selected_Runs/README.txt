@@ -17,4 +17,3 @@ Shows Radial distribution, spatial distribution and energy as a function of ADAM
    - insert plot_Selected_Runs()
    - run the python program
    - the resulting graph should be saved to the Results folder, but not in the Report_Results folder
-
