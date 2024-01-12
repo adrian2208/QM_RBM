@@ -4,7 +4,7 @@
 
 image
 
-![Screenshot](Selected_Runs/D2_P_2I_Y_Importance_S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000_NH_3.pdf")
+![Screenshot](./Selected_Runs/D2_P_2I_Y_Importance_S_2pow21_eqS_2pow21_GD_ls_v_E_LR_0.100000_NH_3.pdf")
 
 image
 
