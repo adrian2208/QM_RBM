@@ -1,13 +1,4 @@
 # Restricted Boltzmann Machines for trapped electron systems
-
-
-
-image
-
-![](https://github.com/maybe-finance/maybe/assets/35243/79d97b31-7fad-4031-9e83-5005bc1d7fd0)
-
-image
-
 This program utilizes RBMs and variational Monte- Carlo methods to approximate the ground states of trapped electrons.
 
 The Paper can be found in the Report Folder as main.pdf.
