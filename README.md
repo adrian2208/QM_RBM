@@ -4,7 +4,7 @@
 
 image
 
-![Screenshot](./Selected_Runs/Particle_Radii.pdf)
+![](https://github.com/maybe-finance/maybe/assets/35243/79d97b31-7fad-4031-9e83-5005bc1d7fd0)
 
 image
 
