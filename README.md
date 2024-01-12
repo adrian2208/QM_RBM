@@ -1,8 +1,12 @@
 # Restricted Boltzmann Machines for trapped electron systems
 
+
+
+image
+
 ![Screenshot](/Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_SamplingSingle_E1.png")
 
-
+image
 
 This program utilizes RBMs and variational Monte- Carlo methods to approximate the ground states of trapped electrons.
 
