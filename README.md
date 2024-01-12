@@ -1,5 +1,9 @@
 # Restricted Boltzmann Machines for trapped electron systems
 
+![alt text](https://github.com/adrian2208/QM_RBM/blob/main/Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_SamplingSingle_E1.pdf?raw=true)
+
+
+
 This program utilizes RBMs and variational Monte- Carlo methods to approximate the ground states of trapped electrons.
 
 The Paper can be found in the Report Folder as main.pdf.
@@ -23,11 +27,6 @@ class Random;// - generates all randomly distributed values
 The main scope is contained in QM_RBM.cpp. All files are output to the Ouput folder, then fetched and processed using 
 DataHandler.py with the library analysis.py.
 
-### The following files and folders can safely be ignored
-   - .vs
-   - __pycache__
-   - out/build
-   - CMakeSettings.json
 ## Usage
 ### See the Selected_Runs folder for an example.
 In QM_RBM.cpp the basic structure of a simulation looks like this
