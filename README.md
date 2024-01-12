@@ -4,7 +4,7 @@
 
 image
 
-![Screenshot](./Selected_Runs/Particle_Radii.pdf")
+![Screenshot](./Selected_Runs/Particle_Radii.pdf)
 
 image
 
