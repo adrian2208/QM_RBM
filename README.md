@@ -1,6 +1,6 @@
 # Restricted Boltzmann Machines for trapped electron systems
 
-![alt text](https://github.com/adrian2208/QM_RBM/blob/main/Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_SamplingSingle_E1.pdf?raw=true)
+<img src="./Results/Report_Results/D2_P_1I_N_Importance_S_2pow20_eqS_2pow20_Position_SamplingSingle_E1.pdf" alt="Chatbot UI" width="600">
 
 
 
