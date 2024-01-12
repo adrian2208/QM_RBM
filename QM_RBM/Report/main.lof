@@ -1,8 +1,0 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Brute force v. Importance sampling}}{8}{figure.caption.4}%
-\contentsline {figure}{\numberline {2}{\ignorespaces SGD v. ADAM}}{8}{figure.caption.5}%
-\contentsline {figure}{\numberline {3}{\ignorespaces SGD v. ADAM high learning rate}}{9}{figure.caption.6}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Parameter sweep for two non- interacting electrons}}{10}{figure.caption.7}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Parameter sweep for two interacting electrons}}{11}{figure.caption.9}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Normalized radial distribution of singlet and non- interacting doublet}}{12}{figure.caption.10}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Spatial distribution of electrons}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {8}{\ignorespaces numerically unstable run- electron positions}}{15}{figure.caption.12}%
