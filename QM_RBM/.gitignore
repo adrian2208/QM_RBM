@@ -1,0 +1,14 @@
+.vs/
+__pycache__
+out/
+CMakeSettings.json
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.synctex.gz
+*.toc
+
