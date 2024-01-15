@@ -1,10 +1,10 @@
-# Restricted Boltzmann Machines for trapped electron systems
-This program utilizes RBMs and variational Monte- Carlo methods to approximate the ground states of trapped electrons.
+# Restricted Boltzmann Machines applied to confined electron systems in one/two- dimensional Harmonic Oscillator potentials - (2020)
+A C++ utility that utilizes Restricted Boltzmann machines, variational Monte- Carlo and either Stochastic Gradient Descent (SGD) or Adaptive Momentum Estimation (ADAM) to approximate the ground states of trapped electron systems.
 
-The Paper can be found in the Report Folder as main.pdf.
+The paper can be found in Docs/main.pdf.
 ## Program structure
 
-The main program body is implemented in c++ with separate classes for the physical system
+The physical system is abstracted, using object orientation, into a wave function-, Hamiltonian-, and system- class. 
 
 ```c++
 class Hamiltonian; 
